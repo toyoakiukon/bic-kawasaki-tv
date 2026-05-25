@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>テレビ選び方ガイド｜ビックカメラ川崎店</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #F1F5F9; }
+    button { font-family: inherit; }
+    select { font-family: inherit; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+
+const BRAND_COLORS = {
+  "Panasonic":  "#1A56DB",
+  "SONY":       "#1A1A1A",
+  "SHARP":      "#DC2626",
+  "TVS REGZA":  "#EA580C",
+  "TCL":        "#2563EB",
+  "Hisense":    "#16A34A",
+  "LG":         "#A21CAF"
+};
+
+const allTvData = [
+  /* ─────────── 32型 ─────────── */
+  {
+    id: 101, size: 32, brand: "Panasonic", model: "TH-32J300",
+    price: 47080, point: 4708, ecoStar: 4.0,
+    type: "4K液晶", panel: "VA / 直下型LED", speaker: 10,
+    googleTV: false, netVideo: false, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "HD", annualCost: 1110,
+    icon: "📺", tagline: "操作シンプル派",
+    catchcopy: "シンプルで使いやすい！地デジ専用ならこれで十分",
+    forWho: ["難しい設定は苦手な方", "地デジ・BSをメインに見る方", "パナソニック品質を求める方"],
+    notForWho: ["ネット動画をよく見る方", "スマホ連携したい方"],
+    strongPoints: [
+      { icon: "🎨", title: "発色が綺麗", body: "独自の6軸色補正で肌の色や自然な色合いを忠実に再現" },
+      { icon: "⚡", title: "省エネ優秀", body: "年間電気代たった1,110円。長く使うほどお得" },
+      { icon: "📡", title: "安定の地デジ画質", body: "国内最大手パナソニックの安定感ある画像処理" }
+    ],
+    staffComment: "Wi-Fi・配信非対応のシンプル設計。6軸色補正エンジンで地デジ・BSを自然な発色で映し出す。年間電気代1,110円の省エネ性能も強み。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 2, hdmiArc: 1, usb: 1, speaker: "10W（2ch）", frameRate: "60Hz", ecoStar: 4.0, annualCost: "1,110円", wifi: false, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: false, detail: "外付けHDD録画対応（1番組）" },
+    streaming: [],
+    note: ""
+  },
+  {
+    id: 102, size: 32, brand: "SONY", model: "K-32W840",
+    price: 60500, point: 6050, ecoStar: 3.2,
+    type: "4K液晶", panel: "VA / 直下型LED", speaker: 10,
+    googleTV: false, netVideo: false, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "FHD", annualCost: 1920,
+    icon: "🏆", tagline: "画質最優先派",
+    catchcopy: "32型でフルHDはSONYだけ！画質にこだわるならこれ",
+    forWho: ["映像の綺麗さを最重視する方", "映画・スポーツをよく見る方", "将来も長く使いたい方"],
+    notForWho: ["Netflix等の配信メインの方", "コスパ重視の方"],
+    strongPoints: [
+      { icon: "🖼️", title: "32型唯一のフルHD", body: "他社がHD（1366×768）の中、圧倒的な1920×1080の高解像度" },
+      { icon: "✨", title: "BRAVIA映像エンジン", body: "「クリアレゾリューション」技術で細部まで鮮明・ノイズも少ない" },
+      { icon: "🎵", title: "声が聞きやすい", body: "クリアボイス機能でニュースやドラマのセリフがくっきり" }
+    ],
+    staffComment: "32型で唯一のフルHD（1920×1080）。BRAVIAエンジンによる高精細映像と声の聞き取りやすさが特徴。ネット配信非対応のため地デジ・BD視聴メイン向き。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 2, hdmiArc: 1, usb: 1, speaker: "10W（2ch）", frameRate: "60Hz", ecoStar: 3.2, annualCost: "1,920円", wifi: false, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: false, detail: "外付けHDD録画対応（1番組）" },
+    streaming: [],
+    note: "配信サービス非対応"
+  },
+  {
+    id: 103, size: 32, brand: "SHARP", model: "2T-C32GE1",
+    price: 52800, point: 5280, ecoStar: 4.5,
+    type: "4K液晶", panel: "直下型LED / 低反射", speaker: 10,
+    googleTV: false, netVideo: false, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "HD", annualCost: 1100,
+    icon: "🌿", tagline: "省エネ最強派",
+    catchcopy: "省エネNo.1！明るい部屋でも見やすい低反射パネル",
+    forWho: ["電気代をとにかく抑えたい方", "明るいリビングに置く方", "シンプルにテレビだけ楽しみたい方"],
+    notForWho: ["動画配信サービスを使いたい方", "スマホ連携したい方"],
+    strongPoints: [
+      { icon: "💚", title: "省エネ性能No.1", body: "7機種中最も消費電力が低い43W。年間電気代1,100円でお財布にやさしい" },
+      { icon: "☀️", title: "低反射パネル", body: "照明や窓の映り込みを大幅カット。明るい部屋でも見やすい" },
+      { icon: "📺", title: "直下型LED", body: "画面全体を均一に照らすバックライトで、端まで明るくクリア" }
+    ],
+    staffComment: "32型中で省エネ性能トップ（年間41kWh・電気代1,100円）。低反射パネルで明るい部屋でも映り込みが少ない。Wi-Fi非搭載のため配信・ネット接続不可。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 2, hdmiArc: 1, usb: 2, speaker: "10W（2ch）", frameRate: "60Hz", ecoStar: 4.5, annualCost: "1,100円", wifi: false, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: false, detail: "外付けHDD録画対応（1番組）" },
+    streaming: [],
+    note: "Wi-Fi非搭載"
+  },
+  {
+    id: 104, size: 32, brand: "SHARP", model: "2T-C32GF1",
+    price: 46940, point: 4694, ecoStar: 4.4,
+    type: "4K液晶", panel: "直下型LED / 低反射", speaker: 10,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "HD", annualCost: 1160,
+    icon: "⚖️", tagline: "バランス最強派",
+    catchcopy: "Google TV搭載で配信も快適。省エネも優秀なバランス機",
+    forWho: ["Netflix・YouTubeも見たい方", "省エネも気になる方", "コスパよく全部揃えたい方"],
+    notForWho: ["FHD画質にこだわる方"],
+    strongPoints: [
+      { icon: "📱", title: "Google TV搭載", body: "Netflix・YouTube・Amazonプライム等を1台でスムーズに楽しめる" },
+      { icon: "💚", title: "省エネ優秀（4.4）", body: "配信対応機の中で最も省エネ。年間電気代1,160円" },
+      { icon: "☀️", title: "低反射パネル＋Medalist L1", body: "新開発エンジンで配信動画も地デジも高精細に映し出す" }
+    ],
+    staffComment: "Google TV搭載で配信・地デジ両対応。低反射パネル＋Medalist L1エンジン搭載。省エネ評価4.4と高く、配信対応機の中では最も電気代が安い（年間1,160円）。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 2, hdmiArc: 1, usb: 2, speaker: "10W（2ch）", frameRate: "60Hz", ecoStar: 4.4, annualCost: "1,160円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: false, detail: "外付けHDD録画対応（裏番組録画）" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "値下げ済み"
+  },
+  {
+    id: 105, size: 32, brand: "TVS REGZA", model: "32V35S",
+    price: 55000, point: 5500, ecoStar: 3.6,
+    type: "4K液晶", panel: "全面直下型LED", speaker: 14,
+    googleTV: false, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "FHD", annualCost: 1570,
+    icon: "🚀", tagline: "最新機能全部入り",
+    catchcopy: "FHD×ネット動画対応！2025年最新のREGZA全部入り",
+    forWho: ["FHD画質で配信も見たい方", "AirPlay・スマホ連携したい方", "最新機能を使いたい方"],
+    notForWho: ["とにかく安く買いたい方", "省エネを重視する方"],
+    strongPoints: [
+      { icon: "🖼️", title: "FHD＋ネット動画", body: "フルHDで配信対応は7機種中この1台のみ" },
+      { icon: "🔊", title: "14Wスピーカー", body: "国内メーカー配信対応機の中で最大出力。音の迫力が違う" },
+      { icon: "📱", title: "AirPlay 2対応", body: "iPhoneの画面をそのままテレビに映せる" }
+    ],
+    staffComment: "32型でフルHD＋ネット動画対応の唯一機。AirPlay 2でiPhoneとも連携可。14Wスピーカーは配信対応の32型では最大出力。2025年最新モデル。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 2, hdmiArc: 1, usb: 2, speaker: "14W（2ch）", frameRate: "60Hz", ecoStar: 3.6, annualCost: "1,570円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD録画・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "2025年新モデル"
+  },
+  {
+    id: 106, size: 32, brand: "TVS REGZA", model: "32V35N",
+    price: 39900, point: 3990, ecoStar: 3.7,
+    type: "4K液晶", panel: "ADS / 直下型LED", speaker: 12,
+    googleTV: false, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "HD", annualCost: 1510,
+    icon: "🎯", tagline: "コスパREGZA派",
+    catchcopy: "録画機能＋ネット動画が4万円以下。在庫限りのお得品",
+    forWho: ["REGZAの録画機能が好きな方", "予算を抑えたい方", "AirPlayでiPhoneと連携したい方"],
+    notForWho: ["最新機能にこだわる方", "FHD画質が必要な方"],
+    strongPoints: [
+      { icon: "💰", title: "在庫一掃で最安値水準", body: "39,900円はREGZA史上最安クラス。なくなり次第終了のチャンス" },
+      { icon: "📼", title: "おまかせ録画", body: "REGZAの強み「おまかせ録画」で見逃しゼロ" },
+      { icon: "📱", title: "AirPlay 2対応", body: "iPhoneやMacの画面をかんたんにテレビへ" }
+    ],
+    staffComment: "REGZAのおまかせ録画・タイムシフト機能を搭載しながら実質35,910円。AirPlay 2対応。2024年モデルの在庫一掃品のため、なくなり次第終了。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 2, hdmiArc: 1, usb: 2, speaker: "12W（2ch）", frameRate: "60Hz", ecoStar: 3.7, annualCost: "1,510円", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画・おまかせ録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "在庫一掃"
+  },
+  {
+    id: 107, size: 32, brand: "TCL", model: "32S5K",
+    price: 39600, point: 3960, ecoStar: 3.7,
+    type: "4K液晶", panel: "量子ドット / 直下型LED", speaker: 16,
+    googleTV: true, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "FHD", annualCost: 1490,
+    icon: "💎", tagline: "コスパ最強派",
+    catchcopy: "フルHD＋Google TV＋量子ドットが最安値！コスパ最強",
+    forWho: ["とにかく機能と価格のバランスを求める方", "Google TVで配信を楽しみたい方", "FHD画質も欲しいけど予算を抑えたい方"],
+    notForWho: ["国内メーカーにこだわる方", "長期サポートを重視する方"],
+    strongPoints: [
+      { icon: "💎", title: "量子ドット×FHD×Google TV", body: "この3つが揃って39,600円は業界最安水準" },
+      { icon: "🔊", title: "16Wスピーカー最大", body: "7機種中最大出力16W。迫力ある音で映画・音楽を楽しめる" },
+      { icon: "🌈", title: "量子ドットパネル", body: "従来液晶より色域が広く、鮮やかで自然な色彩表現が可能" }
+    ],
+    staffComment: "量子ドットパネル＋フルHD＋Google TV＋AirPlay 2＋16Wスピーカーが39,600円。32型最高スペックを最安値で実現。海外メーカーだが日本国内でのサポート体制あり。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 2, hdmiArc: 1, usb: 2, speaker: "16W（2ch）", frameRate: "60Hz", ecoStar: 3.7, annualCost: "1,490円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組同時録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "DAZN"],
+  },
+  /* ─────────── 43型 ─────────── */
+  {
+    id: 201, size: 43, brand: "Hisense", model: "43A6R",
+    price: 59800, point: 598, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💰", tagline: "圧倒的コスパ派",
+    catchcopy: "43型4Kがなんと6万円！ネット動画対応でこの価格は他にない",
+    forWho: ["とにかく安く43型が欲しい方", "ネット動画をメインに楽しむ方", "サブ機・一人暮らし用に探している方"],
+    notForWho: ["国内メーカーにこだわる方", "高画質・高機能を求める方"],
+    strongPoints: [
+      { icon: "💰", title: "43型4K最安値", body: "国内メーカーの最安のほぼ2倍以上の差。同じ予算で上位機種も視野に入る" },
+      { icon: "📱", title: "主要ネット動画対応", body: "Netflix・YouTube・Amazon等に対応。普段使いの動画視聴は十分カバー" },
+      { icon: "🌏", title: "ハイセンスは信頼の大手", body: "世界シェアNo.2の巨大メーカー。東芝映像事業を買収した実績あり" }
+    ],
+    staffComment: "43型4K液晶でネット動画対応が59,800円。国内43型の最安値水準。機能は必要最低限で、コストを抑えて大画面を導入したい用途に適している。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 3, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: false, detail: "外付けHDD録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "hulu", "ABEMA", "TVer"],
+    note: "在庫限り"
+  },
+  {
+    id: 202, size: 43, brand: "SHARP", model: "4T-C43GL1",
+    price: 90500, point: 9050, ecoStar: 0,
+    type: "4K液晶", panel: "液晶", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "📉", tagline: "値下げ特価派",
+    catchcopy: "値下げ済みでお買い得！AQUOSブルーレイ連携が得意なシャープ",
+    forWho: ["AQUOSブルーレイレコーダーを持っている方", "コスパ良く国内メーカーを選びたい方"],
+    notForWho: ["倍速表示や高画質機能を求める方"],
+    strongPoints: [
+      { icon: "📉", title: "値下げで実質8万円台", body: "10%ポイント還元後の実質価格は81,450円。国内メーカー43型で最安クラス" },
+      { icon: "📀", title: "AQUOSブルーレイ連携", body: "シャープのブルーレイレコーダーとの連動機能が充実" },
+      { icon: "🏠", title: "HDMI4端子", body: "ゲーム機・レコーダー等を全て繋いでおける余裕の4端子" }
+    ],
+    staffComment: "値下げ後の実質価格は81,450円。国内メーカー43型の中では最安クラス。HDMI4端子搭載でAQUOSブルーレイとのリンク機能に対応。倍速・量子ドットは非搭載。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "値下げ済み"
+  },
+  {
+    id: 203, size: 43, brand: "TVS REGZA", model: "43M550R",
+    price: 99000, point: 9900, ecoStar: 3.0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "📼", tagline: "録画機能重視派",
+    catchcopy: "REGZAの録画機能が10万円以下で手に入る！コスパ良好なスタンダード機",
+    forWho: ["REGZAの録画・タイムシフト機能が好きな方", "10万円以下で43型4Kが欲しい方"],
+    notForWho: ["倍速・量子ドット等の高画質機能を求める方"],
+    strongPoints: [
+      { icon: "📼", title: "REGZAの録画が使いやすい", body: "「おまかせ録画」や「ざんまいスマートアクセス」でハードルなく使える録画機能" },
+      { icon: "💰", title: "実質89,100円", body: "10%ポイント後の実質価格は89,100円。43型REGZAとしては手頃な入門価格" },
+      { icon: "📡", title: "ネット動画対応", body: "Netflix・YouTube・Amazonプライム等の主要配信サービスに対応" }
+    ],
+    staffComment: "REGZAのおまかせ録画・ネット動画対応を10万円以下で搭載。ただし倍速・量子ドット等の高画質機能は省かれたスタンダードグレード。録画重視のエントリーモデル。",
+    specs: { tuner: "地上/BS ×2", hdmi: 2, hdmiArc: 1, usb: 2, speaker: "24W（2ch）", frameRate: "60Hz", ecoStar: 3.0, annualCost: "2,590円", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・おまかせ録画・裏番組録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: ""
+  },
+  {
+    id: 204, size: 43, brand: "Panasonic", model: "TV-43W80B",
+    price: 100800, point: 10080, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "👨‍👩‍👧", tagline: "ファミリー安心派",
+    catchcopy: "2画面表示対応！スポーツ中継をながら見できるパナソニック",
+    forWho: ["スポーツ観戦しながら別番組も見たい方", "パナソニックブランドに安心感を覚える方", "子どものいる家庭"],
+    notForWho: ["ポイント還元重視の方（TV-43W90Bを検討）"],
+    strongPoints: [
+      { icon: "📺", title: "2画面表示対応", body: "画面を2分割して2番組同時視聴。スポーツと別チャンネルを同時に楽しめる" },
+      { icon: "🔌", title: "HDMI4端子搭載", body: "ゲーム機・レコーダー・PC等を全部つないでもOK" },
+      { icon: "👶", title: "子ども安心機能", body: "まぶしさ自動調整・ブルーライト軽減など子どものいる家庭に配慮した設計" }
+    ],
+    staffComment: "2画面表示対応で2番組同時視聴が可能。HDMI4端子搭載。倍速非対応のため動きの激しい映像はやや残像が出る場合あり。ファミリー向けの機能を重視した設計。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: ""
+  },
+  {
+    id: 205, size: 43, brand: "Panasonic", model: "TV-43W90B",
+    price: 128700, point: 0, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "⚡", tagline: "パナ倍速プレミアム派",
+    catchcopy: "倍速表示＋2画面！スポーツ映像もなめらかに楽しめる",
+    forWho: ["スポーツ・アニメ・映画を高画質で楽しみたい方", "倍速表示で残像のない映像が欲しい方"],
+    notForWho: ["ポイント還元を期待する方（ポイント付与対象外）"],
+    strongPoints: [
+      { icon: "⚡", title: "倍速なめらか表示", body: "映像を補完して動きをなめらかに。サッカー・野球・格闘技等で残像がなく快適" },
+      { icon: "📺", title: "2画面表示対応", body: "TV-43W80Bの機能に加えさらに映像がなめらか。スポーツ好きに最適" },
+      { icon: "🏆", title: "PREMIUM展示商品", body: "ビックカメラPREMIUM対象の厳選モデル" }
+    ],
+    staffComment: "倍速表示＋2画面表示のダブル搭載。スポーツ・アニメで残像が出にくく映像がなめらか。ポイント付与対象外のため実質値引きはなし。PREMIUM認定モデル。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "ポイント対象外・PREMIUM"
+  },
+  {
+    id: 206, size: 43, brand: "TVS REGZA", model: "43Z670R",
+    price: 130620, point: 1306, ecoStar: 0,
+    type: "4K液晶", panel: "全面直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🏪", tagline: "展示品お得狙い派",
+    catchcopy: "展示品特価13万円！上位のZ670Rをお得に手に入れるチャンス",
+    forWho: ["少し傷があっても安くなるなら構わない方", "REGZAの上位モデルをできるだけ安く買いたい方"],
+    notForWho: ["外箱や完品状態にこだわる方", "ポイントをしっかり貯めたい方（ポイント1%）"],
+    strongPoints: [
+      { icon: "🏪", title: "展示品特価で大幅値引き", body: "通常より大幅安の130,620円。REGZAの倍速・高画質モデルがお手頃に" },
+      { icon: "⚡", title: "倍速表示＋全面直下型LED", body: "上位グレードの高画質技術をそのまま享受" },
+      { icon: "🎮", title: "HDMI4端子", body: "ゲーム・レコーダー・PC等フル接続可能" }
+    ],
+    staffComment: "展示品のため外箱なし・ポイント還元1%。倍速表示＋全面直下型LEDを搭載した上位グレードが通常価格より大幅値引き。実機の状態を店頭で確認してから購入可能。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・おまかせ録画・裏番組録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "展示品・外箱なし・ポイント1%"
+  },
+  {
+    id: 207, size: 43, brand: "TVS REGZA", model: "43Z870R",
+    price: 147180, point: 14718, ecoStar: 3.0,
+    type: "量子ドット / miniLED", panel: "量子ドット / Mini LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "✨", tagline: "量子ドット高画質派",
+    catchcopy: "量子ドット×Mini LEDで映像が別次元！REGZAハイエンドの在庫限り",
+    forWho: ["映画・ドラマを最高画質で楽しみたい方", "量子ドットの豊かな色表現を体験したい方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "🌈", title: "量子ドット×Mini LED", body: "従来液晶より色域が大幅に広い。黒の締まりと明部の明るさが両立した次世代パネル" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツや動きの速い映像でも残像なしのなめらかな映像" },
+      { icon: "🏆", title: "REGZA上位グレード", body: "おまかせ録画・タイムシフトリンク等のREGZA上位機能をフル搭載" }
+    ],
+    staffComment: "量子ドット＋Mini LED搭載の43型上位機。広色域と高コントラストを両立し、倍速表示にも対応。REGZAの録画・タイムシフト機能もフル搭載。在庫限りの旧モデル。",
+    specs: { tuner: "地上/BS/CS ×9", hdmi: 4, hdmiArc: 1, usb: 3, speaker: "50W（2.1ch）", frameRate: "120Hz", ecoStar: 3.0, annualCost: "1,590円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: true, simultaneous: true, detail: "外付けHDD・タイムシフト・おまかせ録画・裏番組録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT", "DAZN"],
+    note: "在庫限り"
+  },
+  {
+    id: 208, size: 43, brand: "SHARP", model: "4T-C43HN2",
+    price: 165000, point: 16500, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 4,
+    googleTV: false, netVideo: true, airplay: true, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🔄", tagline: "回転スタンド搭載派",
+    catchcopy: "画面が左右に回転！どの角度からでも正面で見られるシャープの便利機能",
+    forWho: ["ダイニング・キッチンから角度を変えて見たい方", "Apple製品ユーザーでAirPlay連携したい方"],
+    notForWho: ["量子ドット等の最高画質にこだわる方"],
+    strongPoints: [
+      { icon: "🔄", title: "回転式スタンド", body: "テレビを最大30度左右に回転可能。ダイニングテーブルの向きに合わせて自在に調整" },
+      { icon: "🍎", title: "AirPlay 2対応", body: "iPhoneやMacの動画・写真をテレビに瞬時にミラーリング" },
+      { icon: "🔊", title: "4スピーカー", body: "スピーカーが4基搭載で音の広がりが豊か" }
+    ],
+    staffComment: "スタンドが左右30度回転し、置く場所を選ばない。4スピーカー（合計出力非公開）搭載。倍速対応＋AirPlay 2でiPhone連携も可能。川崎店スタッフ推薦モデル。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "4基（出力非公開）", frameRate: "120Hz", ecoStar: 0, annualCost: "1,160円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "川崎店イチ推し"
+  },
+  {
+    id: 209, size: 43, brand: "SONY", model: "KJ-43X83L",
+    price: 165000, point: 16500, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: true, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🎬", tagline: "BRAVIA映像美派",
+    catchcopy: "SONYの映像エンジンで映画を映画館のように！Google TV搭載で配信も快適",
+    forWho: ["映画・ドラマをとことん綺麗な映像で楽しみたい方", "Google TVで使いやすい配信環境を求める方"],
+    notForWho: ["倍速表示が必要な方（非対応）"],
+    strongPoints: [
+      { icon: "🎬", title: "BRAVIA映像エンジン X1", body: "SONYが映画・放送業界向けに培った映像処理技術を家庭用テレビに" },
+      { icon: "📱", title: "Google TV搭載", body: "Netflix・YouTube・Disney+等を1つのホーム画面で管理" },
+      { icon: "🍎", title: "AirPlay 2＋Apple TV+", body: "Apple製品との連携が充実。iPhoneの画面もスムーズにテレビへ" }
+    ],
+    staffComment: "BRAVIAエンジンX1搭載で映像の質感・奥行き感が際立つ。Google TV＋AirPlay 2でスマートTV機能も充実。倍速非対応のため、動きの激しいスポーツ映像は注意。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: ""
+  },
+  {
+    id: 210, size: 43, brand: "Panasonic", model: "TH-43MR770",
+    price: 183800, point: 18380, ecoStar: 0,
+    type: "4K液晶（BD内蔵）", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: true, bdDrive: true,
+    resolution: "4K", annualCost: 0,
+    icon: "💿", tagline: "ブルーレイ内蔵派",
+    catchcopy: "テレビにブルーレイが内蔵！レコーダー別買い不要のオールインワン",
+    forWho: ["ブルーレイレコーダーを別途買いたくない方", "部屋をすっきりさせたい方"],
+    notForWho: ["すでにブルーレイレコーダーをお持ちの方"],
+    strongPoints: [
+      { icon: "💿", title: "ブルーレイドライブ内蔵", body: "テレビ本体でBD再生・録画ができる。レコーダー代が不要でトータルコストを抑えられる" },
+      { icon: "📺", title: "2画面表示対応", body: "テレビを見ながら録画した番組を同時再生" },
+      { icon: "🏠", title: "配線がすっきり", body: "レコーダーとテレビを1台にまとめることで配線が格段に減る" }
+    ],
+    staffComment: "テレビ本体にBDドライブを内蔵。BDの再生・録画・ダビングが1台で完結。2画面表示にも対応。倍速非搭載・HDMI2端子のみ。現在品切れ中（中5営業日以降お届け）。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 2, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, bdDriveRec: true, timeshift: false, simultaneous: true, detail: "BDドライブ内蔵録画・外付けHDD録画・裏番組録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "品切れ中"
+  },
+  {
+    id: 211, size: 43, brand: "TVS REGZA", model: "43Z770S",
+    price: 198000, point: 19800, ecoStar: 0,
+    type: "4K液晶", panel: "全面直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🆕", tagline: "REGZA最新フラッグシップ",
+    catchcopy: "2025年最新REGZAの頂点！倍速×2画面×最上位エンジン搭載",
+    forWho: ["REGZAの最新・最高性能モデルが欲しい方", "スポーツも録画もネット動画も全部最高水準で楽しみたい方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "🆕", title: "2025年最新モデル", body: "REGZAの2025年フラッグシップ。最新の映像エンジン・機能を全搭載" },
+      { icon: "⚡", title: "倍速＋2画面表示", body: "動きのなめらかな倍速表示と、2番組同時視聴の2画面が両立" },
+      { icon: "🏆", title: "全面直下型LEDバックライト", body: "全面均一な高輝度バックライトで、暗いシーンも白飛びなく再現" }
+    ],
+    staffComment: "2025年発売のREGZA最上位。倍速表示＋2画面表示＋全面直下型LEDを同時搭載。ネット動画・録画・スポーツ視聴を最高水準で楽しめる全部入りモデル。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: true, simultaneous: true, detail: "外付けHDD・タイムシフト・おまかせ録画・裏番組録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT", "DAZN"],
+    note: "新製品"
+  },
+  {
+    id: 212, size: 43, brand: "SHARP", model: "4T-C43HP2",
+    price: 188000, point: 18800, ecoStar: 0,
+    type: "miniLED液晶", panel: "miniLED / 直下型", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🔥", tagline: "miniLED最後の一台",
+    catchcopy: "生産完了のminiLED機が在庫限り特価！今だけ買えるレアモデル",
+    forWho: ["miniLED液晶の高コントラストを求める方", "今すぐ在庫を確保したい方"],
+    notForWho: ["後継モデルや長期サポートを重視する方（生産完了品）"],
+    strongPoints: [
+      { icon: "🔥", title: "miniLED高コントラスト", body: "細かいLED制御で暗部と明部のコントラストが高い" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツ・アニメで残像のないなめらかな映像を実現" },
+      { icon: "🎯", title: "生産完了品・在庫限り", body: "現行ラインナップから外れたモデル。入手できる最後の機会かもしれない" }
+    ],
+    staffComment: "miniLEDによる細かい輝度制御で高コントラストを実現。倍速表示対応。生産完了品のため修理・部品供給が将来的に終了する可能性あり。在庫がなくなれば購入不可。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "生産完了・在庫限り"
+  },
+  {
+    id: 213, size: 43, brand: "SHARP", model: "4T-43X7A",
+    price: 275000, point: 27500, ecoStar: 0,
+    type: "新型miniLED液晶", panel: "miniLED / 直下型", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💡", tagline: "新型miniLEDハイエンド",
+    catchcopy: "2025年新型miniLED！豊かな明暗表現で映像が劇的に美しくなる",
+    forWho: ["映像美・コントラストを最重視する方", "Google TVで配信も快適に使いたい方"],
+    notForWho: ["有機ELの完全な黒表現を求める方（4T-42S7Aを推奨）", "予算を抑えたい方"],
+    strongPoints: [
+      { icon: "💡", title: "新型miniLED液晶", body: "2025年最新のminiLED技術。数千のゾーンで細かく輝度制御しコントラスト比が大幅向上" },
+      { icon: "📱", title: "Google TV搭載", body: "配信サービスをまとめて管理できる最新スマートTV OS" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツ・アクション映画でも残像なしのなめらかな映像" }
+    ],
+    staffComment: "2025年新型miniLED搭載の最新AQUOSハイエンド。数千ゾーンの細密な輝度制御＋倍速＋Google TVを一体化。AQUOS 25周年キャッシュバック（5,000円）対象。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "30W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "新製品・CB対象"
+  },
+  {
+    id: 214, size: 42, brand: "SHARP", model: "4T-42S7A",
+    price: 286000, point: 28600, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🌟", tagline: "有機EL最高画質派",
+    catchcopy: "42型有機ELで完全な黒と圧倒的コントラスト！映像好き垂涎のモデル",
+    forWho: ["映像の美しさに最高を求める方", "映画・ドラマを有機ELで楽しみたい方"],
+    notForWho: ["明るい部屋での視聴がメインの方", "予算を抑えたい方"],
+    strongPoints: [
+      { icon: "⚫", title: "有機ELの完全な黒", body: "バックライト不要の自発光。ピクセル単位で点灯・消灯するため完全な黒を表現" },
+      { icon: "🌈", title: "圧倒的コントラスト比", body: "黒が締まると全体的な映像の鮮やかさも増す。夜のシーン・宇宙・暗い映画で真価発揮" },
+      { icon: "🎬", title: "映画好きのためのパネル", body: "映画館の映像に近い体験を自宅で。ハリウッド映画のマスタリングも有機EL基準のものが多い" }
+    ],
+    staffComment: "42型の有機EL（OLED）パネル搭載。バックライト不要の自発光方式でピクセル単位の完全な黒を実現。液晶では不可能なコントラスト比。Google TV＋倍速対応。AQUOS CB5,000円対象。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "30W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "42型・新製品・CB対象"
+  },
+  /* ─────────── 50型・48型・55型 ─────────── */
+  {
+    id: 301, size: 50, brand: "Hisense", model: "50U8R",
+    price: 94800, point: 9480, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💰", tagline: "50型コスパ最強派",
+    catchcopy: "量子ドット×miniLEDが約9.5万円！50型最安値クラスのハイスペック機",
+    forWho: ["50型を安く手に入れたい方", "量子ドット・miniLEDの映像を体験したい方", "コスパ重視の方"],
+    notForWho: ["国内メーカーにこだわる方"],
+    strongPoints: [
+      { icon: "🌈", title: "量子ドット×MiniLED", body: "広色域と高コントラストを両立。国内メーカー同クラスの半額以下" },
+      { icon: "🔊", title: "5スピーカー搭載", body: "50型クラスでは充実の5スピーカー構成" },
+      { icon: "📱", title: "主要ネット動画対応", body: "YouTube・Netflix等の主要配信に対応" }
+    ],
+    staffComment: "量子ドット＋MiniLEDが50型で94,800円は破格。5スピーカー搭載で音質も優秀。在庫限りのため早めのご決断を。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（5基）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "hulu", "ABEMA", "TVer"],
+    note: "在庫限り"
+  },
+  {
+    id: 302, size: 50, brand: "TVS REGZA", model: "50M550R",
+    price: 104500, point: 10450, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "📼", tagline: "録画重視エントリー派",
+    catchcopy: "REGZAの録画機能が10万円台で！50型スタンダードモデル",
+    forWho: ["REGZAのおまかせ録画が使いたい方", "50型を手頃に導入したい方"],
+    notForWho: ["倍速・量子ドット等の高画質機能を求める方"],
+    strongPoints: [
+      { icon: "📼", title: "おまかせ録画搭載", body: "REGZAのスタンダード録画機能を搭載。50型でも手頃な価格帯" },
+      { icon: "📡", title: "ネット動画対応", body: "主要配信サービスに対応" },
+      { icon: "💰", title: "値下げ済み", body: "値下げ後104,500円。50型REGZA入門として最安クラス" }
+    ],
+    staffComment: "50型REGZAのエントリー機。おまかせ録画など基本的な録画機能はしっかり搭載。倍速・量子ドットは非対応のシンプルモデル。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・おまかせ録画・裏番組録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "値下げ済み"
+  },
+  {
+    id: 303, size: 50, brand: "SHARP", model: "4T-C50GL1",
+    price: 110000, point: 11000, ecoStar: 0,
+    type: "4K液晶", panel: "液晶", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "📉", tagline: "シャープ50型コスパ派",
+    catchcopy: "AQUOS 50型が11万円！AQUOSブルーレイ連携対応の手頃なモデル",
+    forWho: ["SHARPブルーレイレコーダーをお持ちの方", "50型を国内メーカーで手頃に揃えたい方"],
+    notForWho: ["倍速・高画質機能を求める方"],
+    strongPoints: [
+      { icon: "📀", title: "AQUOSブルーレイ連携", body: "シャープのBDレコーダーとのリンク機能に対応" },
+      { icon: "🔌", title: "HDMI4端子", body: "複数機器をフル接続可能" },
+      { icon: "💰", title: "国内メーカー50型最安クラス", body: "SHARPの50型4K液晶として110,000円は手頃" }
+    ],
+    staffComment: "国内メーカー50型の中では価格が抑えられたモデル。HDMI4端子でAQUOSブルーレイとの連携も可能。倍速・量子ドットは非搭載。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: ""
+  },
+  {
+    id: 304, size: 50, brand: "TVS REGZA", model: "50Z670R",
+    price: 118800, point: 1188, ecoStar: 0,
+    type: "4K液晶", panel: "全面直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🏪", tagline: "展示品お得狙い派",
+    catchcopy: "倍速×全面直下型LEDの上位REGZA展示品特価！",
+    forWho: ["REGZAの上位モデルをお得に手に入れたい方", "状態確認してから買いたい方"],
+    notForWho: ["外箱完品にこだわる方（外箱なし）", "ポイントをしっかり貯めたい方（ポイント1%）"],
+    strongPoints: [
+      { icon: "🏪", title: "展示品特価で大幅値引き", body: "倍速・全面直下型LED搭載の上位モデルが展示品価格で" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツ・動きの速い映像でも残像なしのなめらか映像" },
+      { icon: "💡", title: "全面直下型LED", body: "均一な高輝度バックライトで画面端まで明るくクリア" }
+    ],
+    staffComment: "展示品のため外箱なし・ポイント1%。倍速＋全面直下型LED搭載の50型Z670Rが展示品特価。店頭で実機の状態を確認してからご購入いただけます。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・おまかせ録画・裏番組録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "展示品・外箱なし・ポイント1%"
+  },
+  {
+    id: 305, size: 50, brand: "Panasonic", model: "TV-50W90B",
+    price: 138600, point: 0, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "⚡", tagline: "パナ倍速プレミアム派",
+    catchcopy: "倍速＋2画面！スポーツもドラマも同時に楽しめるパナソニック50型",
+    forWho: ["スポーツ観戦＋別番組を同時に見たい方", "倍速でなめらか映像を求める方", "パナソニックブランドを求める方"],
+    notForWho: ["ポイント還元を期待する方（ポイント対象外）"],
+    strongPoints: [
+      { icon: "⚡", title: "倍速表示＋2画面", body: "スポーツ中継がなめらか＋別番組を同時表示。ファミリーに便利" },
+      { icon: "🔌", title: "HDMI4端子", body: "ゲーム機・レコーダー等をフル接続可能" },
+      { icon: "🏆", title: "PREMIUM認定モデル", body: "ビックカメラPREMIUM対象の厳選モデル" }
+    ],
+    staffComment: "倍速表示＋2画面のダブル搭載。50型になってさらに迫力が増す。ポイント付与対象外な点だけ注意。PREMIUM認定モデル。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "ポイント対象外・PREMIUM"
+  },
+  {
+    id: 306, size: 50, brand: "TVS REGZA", model: "50Z870R",
+    price: 152800, point: 1528, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / Mini LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "✨", tagline: "量子ドット高画質派",
+    catchcopy: "量子ドット×MiniLED×倍速のREGZA上位機が展示品特価！",
+    forWho: ["REGZAの高画質モデルを展示品でお得に手に入れたい方", "量子ドットの色表現を体験したい方"],
+    notForWho: ["外箱完品にこだわる方", "ポイントをしっかり貯めたい方（ポイント1%）"],
+    strongPoints: [
+      { icon: "🌈", title: "量子ドット×MiniLED", body: "広色域と高コントラスト。暗部も明部も諦めない次世代パネル" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツ・アニメで残像なしのなめらかな映像" },
+      { icon: "🏆", title: "REGZAタイムシフト対応", body: "録画・タイムシフト等REGZAの上位機能をフル搭載" }
+    ],
+    staffComment: "50型のZ870Rが展示品特価152,800円。量子ドット×MiniLEDのハイエンド画質が展示品価格でお得に。ポイント1%・外箱なし。",
+    specs: { tuner: "地上/BS/CS ×9", hdmi: 4, hdmiArc: 1, usb: 3, speaker: "50W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: true, simultaneous: true, detail: "外付けHDD・タイムシフト・おまかせ録画・裏番組録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT", "DAZN"],
+    note: "展示品・外箱なし・ポイント1%"
+  },
+  {
+    id: 307, size: 50, brand: "SONY", model: "KJ-50X83L",
+    price: 179850, point: 17985, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: true, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🎬", tagline: "BRAVIA映像美派",
+    catchcopy: "BRAVIAエンジン×Google TV！映画・ドラマを美しく楽しむ50型SONY",
+    forWho: ["映像の質感・奥行きにこだわる方", "Google TVで配信を快適に楽しみたい方", "iPhoneユーザーでAirPlay連携したい方"],
+    notForWho: ["倍速表示が必要な方（非対応）"],
+    strongPoints: [
+      { icon: "🎬", title: "BRAVIAエンジンX1", body: "映画・放送業界向けの映像処理技術を家庭用に。奥行きのある映像美" },
+      { icon: "📱", title: "Google TV×AirPlay 2", body: "配信もiPhone連携もスムーズ" },
+      { icon: "📉", title: "値下げ済み", body: "値下げ後179,850円。50型BRAVIAとして狙い目の価格" }
+    ],
+    staffComment: "BRAVIAエンジンX1搭載でSONY独自の映像処理が際立つ50型。Google TV＋AirPlay 2でスマートTV機能も充実。倍速は非対応のため動きの激しいスポーツ映像は注意。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "値下げ済み"
+  },
+  {
+    id: 308, size: 50, brand: "SONY", model: "XRJ-50X90K",
+    price: 153800, point: 0, ecoStar: 0,
+    type: "4K液晶", panel: "全面直下型LED / XR", speaker: 0,
+    googleTV: true, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🎬", tagline: "BRAVIA展示品特価派",
+    catchcopy: "BRAVIA上位XR搭載の50型が展示品特価15万円台！",
+    forWho: ["SONYの上位映像エンジンを展示品価格で狙いたい方", "Google TV＋AirPlay 2対応が欲しい方"],
+    notForWho: ["外箱完品にこだわる方"],
+    strongPoints: [
+      { icon: "🎬", title: "BRAVIA XRエンジン搭載", body: "X83Lより上位のXRプロセッサー。より自然で立体感のある映像処理" },
+      { icon: "💡", title: "全面直下型LEDバックライト", body: "精密なバックライト制御で黒の締まりと明部の明るさを両立" },
+      { icon: "🏪", title: "展示品特価", body: "通常価格より大幅値引き。実機の状態を確認してからご購入可能" }
+    ],
+    staffComment: "X83Lより上位のXRプロセッサー搭載の展示品。外箱なし・保証書あり。配送納期2週間。状態を必ずご確認ください。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "展示品・外箱なし"
+  },
+  {
+    id: 309, size: 50, brand: "SHARP", model: "4T-C50HN2",
+    price: 176000, point: 17600, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: true, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🔄", tagline: "回転スタンド50型派",
+    catchcopy: "50型でも回転スタンド！どの角度からでも正面で見られる",
+    forWho: ["ダイニング・キッチンから角度を変えて見たい方", "iPhoneユーザーでAirPlay連携したい方"],
+    notForWho: ["量子ドット等の最高画質にこだわる方"],
+    strongPoints: [
+      { icon: "🔄", title: "回転式スタンド", body: "左右25度回転対応。ダイニングからも正面で見られる" },
+      { icon: "🍎", title: "AirPlay 2対応", body: "iPhone・Macからワンタッチでテレビにミラーリング" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツ・アニメで残像のないなめらかな映像" }
+    ],
+    staffComment: "50型でも回転スタンド搭載。価格はご相談くださいと表記あり、交渉余地あり。AirPlay 2対応でApple製品ユーザーにも最適。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "4基（出力非公開）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "価格ご相談"
+  },
+  {
+    id: 310, size: 50, brand: "SHARP", model: "4T-50X7A",
+    price: 286000, point: 28600, ecoStar: 0,
+    type: "新型miniLED液晶", panel: "miniLED / 直下型", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💡", tagline: "新型miniLEDハイエンド",
+    catchcopy: "2025年最新AQUOS miniLED 50型！倍速×Google TV×豊かな明暗表現",
+    forWho: ["miniLEDの高コントラスト映像を求める方", "Google TVで配信も快適に楽しみたい方"],
+    notForWho: ["有機ELの完全な黒表現を求める方", "予算を抑えたい方"],
+    strongPoints: [
+      { icon: "💡", title: "2025年新型miniLED", body: "数千ゾーンの細密な輝度制御でコントラスト比が大幅向上" },
+      { icon: "📱", title: "Google TV搭載", body: "配信サービスをまとめて管理する最新スマートTV OS" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツ・アクション映画でも残像なし" }
+    ],
+    staffComment: "50型の新型miniLED AQUOS最上位。数千ゾーンの精密輝度制御＋倍速＋Google TVを一体化。AQUOS 25周年キャッシュバック（5,000円）対象。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "30W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "新製品・CB5,000円対象"
+  },
+  /* 48型 */
+  {
+    id: 311, size: 48, brand: "TVS REGZA", model: "48X8900R",
+    price: 220000, point: 22000, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 0,
+    googleTV: false, netVideo: true, airplay: true, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "⭐", tagline: "REGZA有機EL派",
+    catchcopy: "REGZAのおまかせ録画×有機ELの完全な黒！48型最高峰モデル",
+    forWho: ["有機ELの映像美とREGZAの録画機能を両立したい方", "AirPlay 2対応でiPhoneと連携したい方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "⚫", title: "有機EL×REGZA録画", body: "完全な黒表現の有機ELパネルにREGZAのおまかせ録画が融合" },
+      { icon: "⚡", title: "倍速表示対応", body: "有機ELの応答速度に倍速が加わりスポーツも快適" },
+      { icon: "🔊", title: "8スピーカー 60W", body: "有機ELテレビ最大クラスの大出力スピーカーシステム" }
+    ],
+    staffComment: "REGZAの有機ELフラッグシップ。おまかせ録画＋タイムシフト＋有機ELの映像美が融合。8スピーカー60Wの迫力ある音響も魅力。値下げ済みでお買い得。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 3, speaker: "60W（8スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: true, simultaneous: true, detail: "外付けHDD・タイムシフト・おまかせ録画・裏番組録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "値下げ済み"
+  },
+  {
+    id: 312, size: 48, brand: "LG", model: "OLED48C5PJA",
+    price: 208000, point: 20800, ecoStar: 2.0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）WOLED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 4100,
+    icon: "🌟", tagline: "LG有機EL定番派",
+    catchcopy: "世界シェアNo.1の有機ELパネル！LGの48型OLEDが価格ご相談",
+    forWho: ["有機ELの最高品質を求める方", "LGのゲーミング機能（144Hz等）を使いたい方"],
+    notForWho: ["省エネを重視する方（省エネ評価2.0）"],
+    strongPoints: [
+      { icon: "⚫", title: "LG製WOLEDパネル", body: "有機ELパネル世界シェアNo.1のLG製。完全な黒と無限コントラスト比" },
+      { icon: "🎮", title: "ゲーミング対応（144Hz）", body: "高リフレッシュレート対応でゲームも快適。応答速度も有機EL最速クラス" },
+      { icon: "💰", title: "価格ご相談", body: "表示価格より交渉余地あり。ぜひスタッフまでお声がけを" }
+    ],
+    staffComment: "LGの有機ELは世界シェアNo.1のパネル品質。ゲーム用途にも強く144Hz対応。価格は「ご相談ください」表記あり、交渉余地があります。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 2, usb: 3, speaker: "—", frameRate: "144Hz", ecoStar: 2.0, annualCost: "4,100円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "価格ご相談"
+  },
+  {
+    id: 313, size: 48, brand: "SONY", model: "XRJ-48A90K",
+    price: 263800, point: 0, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL QD-OLED", speaker: 0,
+    googleTV: true, netVideo: true, airplay: true, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🌟", tagline: "SONY有機EL展示品派",
+    catchcopy: "SONYの有機EL×BRAVIAエンジンが展示品特価！画面焼き付きあり",
+    forWho: ["SONYの有機ELを展示品価格で手に入れたい方", "Google TV＋AirPlay 2対応が欲しい方"],
+    notForWho: ["完品状態にこだわる方（画面焼き付きあり）"],
+    strongPoints: [
+      { icon: "⚫", title: "SONY有機EL×BRAVIAエンジン", body: "有機ELの完全な黒にBRAVIA XRエンジンが組み合わさった最高の映像体験" },
+      { icon: "📱", title: "Google TV×AirPlay 2", body: "配信＋iPhoneミラーリングをシームレスに" },
+      { icon: "🏪", title: "展示品特価", body: "展示品のため通常価格より大幅値引き。状態確認必須" }
+    ],
+    staffComment: "有機EL＋BRAVIAエンジンのハイエンドSONY。展示品のため画面焼き付きあり・外箱なし。納期2週間。購入前に必ず状態確認をお願いします。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 2, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "展示品・焼き付きあり・外箱なし"
+  },
+  {
+    id: 314, size: 48, brand: "SHARP", model: "4T-48S7A",
+    price: 297000, point: 29700, ecoStar: 3.0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 2920,
+    icon: "🌟", tagline: "AQUOS有機EL新製品派",
+    catchcopy: "2025年新製品！AQUOS有機EL×7スピーカー×倍速の最高峰",
+    forWho: ["AQUOSの有機EL最新モデルを求める方", "スピーカー出力65Wの迫力ある音を楽しみたい方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "⚫", title: "有機EL×倍速×Google TV", body: "AQUOS 2025年の有機ELフラッグシップ。完全な黒に倍速の滑らかさが融合" },
+      { icon: "🔊", title: "7スピーカー 65W", body: "AQUOS有機ELシリーズ最大の音響システム。臨場感が段違い" },
+      { icon: "💰", title: "AQUOS CB10,000円対象", body: "55型以上の対象機種には10,000円キャッシュバックあり（48型は5,000円）" }
+    ],
+    staffComment: "2025年発売のAQUOS有機EL最上位。7スピーカー65W＋倍速＋Google TV＋有機ELが全部入り。省エネ評価3.0で年間2,920円の電気代。AQUOSキャッシュバック対象。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "65W（7スピーカー）", frameRate: "120Hz", ecoStar: 3.0, annualCost: "2,920円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "新製品・CB5,000円対象"
+  },
+  {
+    id: 315, size: 48, brand: "SHARP", model: "4T-48S9A",
+    price: 330000, point: 33000, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）上位", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "👑", tagline: "AQUOS有機EL最上位派",
+    catchcopy: "AQUOS最上位有機EL！2画面×倍速×最高スペックの48型フラッグシップ",
+    forWho: ["AQUOSで最高の有機EL体験を求める方", "2画面表示で複数チャンネルを同時視聴したい方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "👑", title: "AQUOS有機EL最上位", body: "2025年AQUOS有機ELシリーズのフラッグシップ。全機能を最高水準で搭載" },
+      { icon: "📺", title: "2画面表示＋倍速", body: "有機ELの美しさで2番組同時視聴が可能。スポーツ観戦にも最適" },
+      { icon: "💰", title: "AQUOS CB10,000円対象", body: "55型以上対象10,000円CB、48型は対象機種確認要" }
+    ],
+    staffComment: "2画面表示が有機ELで使えるのはこのモデルだけ。AQUOS 2025年最上位フラッグシップ。全機能が最高水準で揃っています。AQUOSキャッシュバック対象。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "65W（7スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "新製品・CB対象"
+  },
+  /* 55型 */
+  {
+    id: 316, size: 55, brand: "LG", model: "OLED55G5PJB",
+    price: 363000, point: 36300, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL WOLED evo", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "👑", tagline: "LG有機EL最上位派",
+    catchcopy: "LG最上位有機EL！無限コントラスト×α11 AIプロセッサーの圧倒的映像",
+    forWho: ["有機ELの最高峰画質を求める方", "映画・ゲーム・スポーツ全てを最高画質で楽しみたい方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "⚫", title: "OLED evo最上位パネル", body: "LG Gシリーズ搭載の高輝度OLED evo。通常OLEDより輝度が高く明るい部屋でも見やすい" },
+      { icon: "🤖", title: "α11 AIプロセッサー", body: "AIが映像・音声をリアルタイム最適化。コンテンツに合わせて自動調整" },
+      { icon: "🎮", title: "ゲーム×映画×スポーツ全部最強", body: "4K 120Hz・VRR・ALLM対応でゲームも映画も妥協なし" }
+    ],
+    staffComment: "LGの55型有機EL最上位Gシリーズ。OLED evo＋α11 AIプロセッサーで明るい部屋でも有機ELの真価が発揮される。ゲーム・映画・スポーツ全てに対応した究極の一台。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 2, usb: 3, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "新製品"
+  },
+  {
+    id: 317, size: 48, brand: "SHARP", model: "4T-C48HQ2",
+    price: 220000, point: 22000, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "📺", tagline: "48型倍速2画面派",
+    catchcopy: "倍速＋2画面表示の48型AQUOS！価格はご相談",
+    forWho: ["スポーツ観戦しながら別番組も見たい方", "倍速で残像のないなめらか映像が欲しい方"],
+    notForWho: ["有機ELの映像美を求める方"],
+    strongPoints: [
+      { icon: "⚡", title: "倍速＋2画面", body: "スポーツ中継がなめらか＋別番組を同時表示" },
+      { icon: "💰", title: "価格はご相談", body: "表示220,000円より交渉余地あり" },
+      { icon: "🔌", title: "HDMI端子充実", body: "複数機器をまとめて接続可能" }
+    ],
+    staffComment: "倍速＋2画面を48型で実現したモデル。価格「ご相談ください」表記あり交渉余地があります。まとめ買い割引（SHARP製品2点5%・3点10%）対象。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "価格ご相談"
+  },
+  {
+    id: 318, size: 50, brand: "SHARP", model: "4T-C50HP2",
+    price: 209000, point: 20900, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🔥", tagline: "量子ドット生産完了狙い",
+    catchcopy: "量子ドット×MiniLED×倍速×2画面が生産完了特価！最後のチャンス",
+    forWho: ["量子ドット×MiniLEDの高画質を手頃に手に入れたい方", "倍速＋2画面対応が必要な方"],
+    notForWho: ["後継モデルや長期サポートを重視する方（生産完了品）"],
+    strongPoints: [
+      { icon: "🌈", title: "量子ドット×MiniLED", body: "広色域と高コントラストを両立した高画質パネル" },
+      { icon: "⚡", title: "倍速＋2画面表示", body: "スポーツも2番組同時視聴も対応" },
+      { icon: "💰", title: "価格ご相談＋生産完了特価", body: "表示209,000円から交渉可能。なくなれば購入不可" }
+    ],
+    staffComment: "量子ドット×MiniLED搭載の50型、生産完了で在庫限り。この高画質がご相談価格で買えるのは今だけ。倍速＋2画面も搭載した全部入りモデルです。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "価格ご相談・生産完了・在庫限り"
+  },
+  {
+    id: 319, size: 55, brand: "SHARP", model: "4T-C55GL1",
+    price: 143000, point: 14300, ecoStar: 0,
+    type: "4K液晶", panel: "液晶", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "📉", tagline: "55型コスパ液晶派",
+    catchcopy: "55型4K液晶が14万円台！AQUOSスタンダードモデル",
+    forWho: ["SHARPブルーレイを持っている方", "55型を国内メーカーで手頃に揃えたい方"],
+    notForWho: ["倍速・高画質機能を求める方"],
+    strongPoints: [
+      { icon: "📺", title: "55型4Kスタンダード", body: "倍速なしのシンプル構成で55型を手頃に導入" },
+      { icon: "📀", title: "AQUOSブルーレイ連携", body: "SHARPのBDレコーダーとのリンク機能に対応" },
+      { icon: "🔌", title: "HDMI4端子", body: "複数機器を全部接続可能" }
+    ],
+    staffComment: "55型の国内メーカー最安クラス。倍速・量子ドットは非搭載のシンプルモデル。SHARPのブルーレイをお持ちの方に特にフィット。まとめ割対象。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: ""
+  },
+  {
+    id: 320, size: 55, brand: "SHARP", model: "4T-C55HN2",
+    price: 168000, point: 16800, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: true, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🔄", tagline: "55型回転スタンド派",
+    catchcopy: "55型でも回転スタンド！倍速＋AirPlay 2対応",
+    forWho: ["ダイニング・キッチンから角度を変えて見たい方", "iPhoneユーザーでAirPlay 2を使いたい方"],
+    notForWho: ["量子ドット等の最高画質にこだわる方"],
+    strongPoints: [
+      { icon: "🔄", title: "55型回転スタンド", body: "55型の大画面でも左右に回転。ダイニングどこからでも正面で見られる" },
+      { icon: "🍎", title: "AirPlay 2対応", body: "iPhoneやMacからワンタッチでミラーリング" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツ・アニメで残像のないなめらか映像" }
+    ],
+    staffComment: "55型で回転スタンドが使えるモデル。倍速＋AirPlay 2も搭載。価格「ご相談」表記あり交渉余地があります。4スピーカー搭載で音質も優秀。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "4基搭載", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "価格ご相談"
+  },
+  {
+    id: 321, size: 55, brand: "SHARP", model: "4T-C55HP1",
+    price: 256590, point: 25659, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: true, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🔥", tagline: "55型量子ドット生産完了",
+    catchcopy: "55型量子ドット×MiniLED×回転スタンドが生産完了特価！",
+    forWho: ["55型の量子ドット×MiniLEDをお得に手に入れたい方", "回転スタンド×高画質の組み合わせを求める方"],
+    notForWho: ["長期サポートを重視する方（生産完了品）"],
+    strongPoints: [
+      { icon: "🌈", title: "量子ドット×MiniLED×回転スタンド", body: "55型高画質パネルにどこからでも見やすい回転スタンドが融合" },
+      { icon: "⚡", title: "倍速＋AirPlay 2", body: "なめらかな映像＋iPhone連携がセット" },
+      { icon: "💰", title: "生産完了特価＋価格ご相談", body: "在庫限りのため通常より交渉余地あり" }
+    ],
+    staffComment: "55型量子ドット×MiniLEDの旧フラッグシップ。生産完了・在庫限りのため今が最後のチャンス。回転スタンド＋AirPlay 2も搭載。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "価格ご相談・生産完了・在庫限り"
+  },
+  {
+    id: 322, size: 55, brand: "SHARP", model: "4T-55X7A",
+    price: 352000, point: 35200, ecoStar: 0,
+    type: "新型miniLED液晶", panel: "miniLED / 直下型", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💡", tagline: "AQUOS 55型最上位派",
+    catchcopy: "2025年新型AQUOS最上位！miniLED×7スピーカー×倍速×2画面の55型フラッグシップ",
+    forWho: ["55型のAQUOS最高スペックを求める方", "7スピーカーの迫力ある音響で楽しみたい方", "Google TVで配信も快適に使いたい方"],
+    notForWho: ["有機ELの完全な黒表現を求める方", "予算を抑えたい方"],
+    strongPoints: [
+      { icon: "💡", title: "2025年新型miniLED最上位", body: "数千ゾーンの精密輝度制御で圧倒的なコントラスト比を実現" },
+      { icon: "🔊", title: "7スピーカー搭載", body: "55型クラスで最大級のスピーカー構成。臨場感が段違い" },
+      { icon: "📺", title: "倍速＋2画面＋Google TV", body: "全機能が最上位水準で揃った2025年フラッグシップ" }
+    ],
+    staffComment: "SHARPの55型2025年最上位モデル。miniLED×7スピーカー×倍速×2画面×Google TVが全部入り。AQUOS 25周年キャッシュバック（5,000円）対象。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "7スピーカー", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "新製品・CB5,000円対象"
+  }
+];
+
+function fmt(n) { return n.toLocaleString(); }
+
+const BRANDS_LIST   = ["Panasonic", "SONY", "SHARP", "TVS REGZA", "TCL", "Hisense", "LG"];
+const SIZES         = ["すべて", "32型", "43型", "50型以上"];
+const FEATURE_OPTS  = [
+  { key: "googleTV",    label: "Google TV" },
+  { key: "airplay",     label: "AirPlay 2" },
+  { key: "doubleSpeed", label: "倍速対応" },
+  { key: "twoScreen",   label: "2画面" },
+  { key: "netVideo",    label: "ネット動画" },
+  { key: "oled",        label: "有機EL" },
+  { key: "miniLED",     label: "miniLED" },
+  { key: "bdDrive",     label: "BD内蔵" }
+];
+const SORT_OPTS = [
+  { key: "price",     label: "価格順（安い順）" },
+  { key: "priceDesc", label: "価格順（高い順）" }
+];
+
+/* ─── 費用シミュレーター ─── */
+function FeeCalculator({ hasCompare }) {
+  var [tvInch, setTvInch] = useState("32");
+  var [stairs, setStairs] = useState("none");
+  var [stairsFloor, setStairsFloor] = useState("2");
+  var [tvSize, setTvSize] = useState("16up");
+  var [recycleType, setRecycleType] = useState("hakobi");
+  var [open, setOpen] = useState(false);
+
+  /* 配送料（テレビサイズ別・キャンペーン反映） */
+  var deliveryMap = {
+    "32":  { fee: 2200,  label: "32型（3辺240cm以下・30kg以下）", campaign: false },
+    "42":  { fee: 0,     label: "43型以上は配送料無料キャンペーン中", campaign: true },
+    "51":  { fee: 0,     label: "43型以上は配送料無料キャンペーン中", campaign: true },
+    "60":  { fee: 0,     label: "43型以上は配送料無料キャンペーン中", campaign: true },
+    "69":  { fee: 0,     label: "43型以上は配送料無料キャンペーン中", campaign: true },
+    "70up":{ fee: 0,     label: "43型以上は配送料無料キャンペーン中", campaign: true }
+  };
+  var delivery = deliveryMap[tvInch].fee;
+
+  /* テレビ設置料（固定） */
+  var install = 1100;
+
+  /* 階段昇降料（内階段・外階段 × 階数） */
+  var stairsInner = { "2": 3300, "3": 3300, "4": 4400, "5": 5500 };
+  var stairsOuter = { "2": 0,    "3": 1100, "4": 2200, "5": 3300 };
+  var stairsFee = stairs === "none" ? 0
+    : stairs === "inner" ? stairsInner[stairsFloor]
+    : stairsOuter[stairsFloor];
+
+  /* リサイクル料 */
+  var recycleMap = {
+    hakobi: { "15under": 4620, "16up": 5720 },
+    jitori: { "15under": 7370, "16up": 8470 },
+    ec:     { "15under": 660,  "16up": 660  }
+  };
+  var recycle = recycleMap[recycleType][tvSize];
+
+  var total = delivery + install + stairsFee + recycle;
+
+  var tvOpts = [
+    { k: "32",   l: "32型" },
+    { k: "42",   l: "43型" },
+    { k: "51",   l: "51型以下" },
+    { k: "60",   l: "60型以下" },
+    { k: "69",   l: "69型以下" },
+    { k: "70up", l: "70型以上" }
+  ];
+  var stairsOpts = [
+    { k: "none",  l: "なし / EV利用" },
+    { k: "inner", l: "内階段" },
+    { k: "outer", l: "外階段" }
+  ];
+  var floorOpts = ["2", "3", "4", "5"];
+  var sizeOpts = [
+    { k: "15under", l: "15型以下" },
+    { k: "16up",    l: "16型以上" }
+  ];
+  var recycleOpts = [
+    { k: "hakobi", l: "運び入れのみ" },
+    { k: "jitori", l: "自取り（旧TV回収）" },
+    { k: "ec",     l: "EC廃棄（+廃棄料）" }
+  ];
+
+  function selBtn(val, cur, setter, label) {
+    var active = val === cur;
+    return (
+      <button key={val} onClick={function() { setter(val); }} style={{
+        padding: "5px 11px", borderRadius: "6px", cursor: "pointer", fontSize: "11px",
+        fontWeight: active ? "700" : "500",
+        border: active ? "2px solid #1D4ED8" : "2px solid #E2E8F0",
+        background: active ? "#EFF6FF" : "#F8FAFC",
+        color: active ? "#1D4ED8" : "#64748B"
+      }}>{label}</button>
+    );
+  }
+
+  function row(label, value, sub, color) {
+    return (
+      <div style={{ background: "#fff", borderRadius: "8px", padding: "10px 13px", border: "1px solid #E2E8F0", marginBottom: "7px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ fontSize: "12px", fontWeight: "800", color: "#1E293B" }}>{label}</div>
+          <div style={{ fontSize: "18px", fontWeight: "800", color: color || (value === 0 ? "#059669" : "#1E293B") }}>
+            {value === 0 ? "無料" : "¥" + value.toLocaleString()}
+          </div>
+        </div>
+        {sub && (
+          <div style={{ fontSize: "10px", color: "#94A3B8", marginTop: "4px", borderTop: "1px solid #F1F5F9", paddingTop: "4px" }}>{sub}</div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ background: "#fff", border: "1.5px solid #E2E8F0", borderRadius: "12px", overflow: "hidden", marginBottom: hasCompare ? "100px" : "0" }}>
+      <button onClick={function() { setOpen(!open); }} style={{
+        width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center",
+        padding: "12px 16px", background: "none", border: "none", cursor: "pointer"
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "16px" }}>🚚</span>
+          <div style={{ textAlign: "left" }}>
+            <div style={{ fontSize: "13px", fontWeight: "800", color: "#1E293B" }}>配送・設置・昇降・リサイクル料金シミュレーター</div>
+            <div style={{ fontSize: "10px", color: "#94A3B8" }}>テレビのサイズ・設置環境を選んで合計費用を確認</div>
+          </div>
+        </div>
+        <span style={{ fontSize: "16px", color: "#94A3B8" }}>{open ? "▲" : "▼"}</span>
+      </button>
+
+      {open && (
+        <div style={{ padding: "0 16px 16px", borderTop: "1px solid #F1F5F9" }}>
+
+          {/* テレビサイズ */}
+          <div style={{ marginTop: "12px", marginBottom: "10px" }}>
+            <div style={{ fontSize: "11px", fontWeight: "700", color: "#475569", marginBottom: "5px" }}>📺 購入するテレビのサイズ</div>
+            <div style={{ display: "flex", gap: "5px", flexWrap: "wrap" }}>
+              {tvOpts.map(function(o) { return selBtn(o.k, tvInch, setTvInch, o.l); })}
+            </div>
+            <div style={{ fontSize: "10px", color: "#94A3B8", marginTop: "4px" }}>{deliveryMap[tvInch].label}</div>
+          </div>
+
+          {/* 階段昇降 */}
+          <div style={{ marginBottom: "10px" }}>
+            <div style={{ fontSize: "11px", fontWeight: "700", color: "#475569", marginBottom: "5px" }}>🪜 階段昇降（配送・設置料とは別料金）</div>
+            <div style={{ display: "flex", gap: "5px", flexWrap: "wrap", marginBottom: "6px" }}>
+              {stairsOpts.map(function(o) { return selBtn(o.k, stairs, setStairs, o.l); })}
+            </div>
+            {stairs !== "none" && (
+              <div>
+                <div style={{ fontSize: "10px", color: "#64748B", marginBottom: "4px" }}>昇降する階数：</div>
+                <div style={{ display: "flex", gap: "5px" }}>
+                  {floorOpts.map(function(f) { return selBtn(f, stairsFloor, setStairsFloor, f + "階"); })}
+                </div>
+                <div style={{ fontSize: "10px", color: "#94A3B8", marginTop: "4px" }}>
+                  {stairs === "inner"
+                    ? "内階段：2階¥3,300 / 3階¥3,300 / 4階¥4,400 / 5階¥5,500"
+                    : "外階段：2階無料 / 3階¥1,100 / 4階¥2,200 / 5階¥3,300"}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* リサイクル */}
+          <div style={{ marginBottom: "14px" }}>
+            <div style={{ fontSize: "11px", fontWeight: "700", color: "#475569", marginBottom: "5px" }}>♻️ 旧テレビのリサイクル</div>
+            <div style={{ display: "flex", gap: "5px", flexWrap: "wrap", marginBottom: "6px" }}>
+              {recycleOpts.map(function(o) { return selBtn(o.k, recycleType, setRecycleType, o.l); })}
+            </div>
+            <div style={{ display: "flex", gap: "5px" }}>
+              {sizeOpts.map(function(o) { return selBtn(o.k, tvSize, setTvSize, o.l); })}
+            </div>
+            {recycleType === "ec" && (
+              <div style={{ fontSize: "10px", color: "#DC2626", marginTop: "4px" }}>※別途メーカー廃棄料が加算されます</div>
+            )}
+          </div>
+
+          {/* 内訳 */}
+          <div style={{ background: "#F8FAFC", borderRadius: "10px", padding: "12px", border: "1.5px solid #E2E8F0" }}>
+            {row("🚚 配送料",
+              delivery,
+              deliveryMap[tvInch].campaign
+                ? "🎉 43型以上 配送料無料キャンペーン中！"
+                : deliveryMap[tvInch].label,
+              deliveryMap[tvInch].campaign ? "#059669" : undefined
+            )}
+            {row("🔧 テレビ設置料", install, "設置作業費（固定）")}
+            {row("🪜 昇降料", stairsFee,
+              stairs === "none" ? "なし / エレベーター利用" :
+              (stairs === "inner" ? "内階段 " : "外階段 ") + stairsFloor + "階",
+              stairsFee > 0 ? "#DC2626" : undefined
+            )}
+            {row("♻️ リサイクル料", recycle,
+              (recycleType === "hakobi" ? "運び入れのみ" : recycleType === "jitori" ? "自取り（旧TV回収）" : "EC廃棄") +
+              "（" + (tvSize === "15under" ? "15型以下" : "16型以上") + "）" +
+              (recycleType === "ec" ? " ※廃棄料別途" : "")
+            )}
+
+            {/* 合計 */}
+            <div style={{ background: "#1E3A5F", borderRadius: "8px", padding: "12px 14px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "12px" }}>合計追加費用（目安）</div>
+                <div style={{ color: "#fff", fontSize: "26px", fontWeight: "800" }}>¥{total.toLocaleString()}</div>
+              </div>
+              {recycleType === "ec" && (
+                <div style={{ color: "#FCA5A5", fontSize: "10px", textAlign: "right", marginBottom: "5px" }}>※ メーカー廃棄料は含まれていません</div>
+              )}
+              <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
+                {[
+                  { l: "配送", v: delivery },
+                  { l: "設置", v: install },
+                  { l: "昇降", v: stairsFee },
+                  { l: "リサイクル", v: recycle }
+                ].map(function(x) { return (
+                  <div key={x.l} style={{ background: "rgba(255,255,255,0.12)", borderRadius: "5px", padding: "3px 8px", fontSize: "10px", color: "rgba(255,255,255,0.85)" }}>
+                    {x.l}：{x.v === 0 ? "無料" : "¥" + x.v.toLocaleString()}
+                  </div>
+                ); })}
+              </div>
+            </div>
+
+            <div style={{ marginTop: "8px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px" }}>
+              <div style={{ padding: "8px 10px", background: "#EFF6FF", borderRadius: "6px", fontSize: "10px", color: "#1E40AF" }}>
+                <span style={{ fontWeight: "700" }}>長期保証（5年）</span><br />ポイント5%利用で加入可
+              </div>
+              <div style={{ padding: "8px 10px", background: "#FFF7ED", borderRadius: "6px", fontSize: "10px", color: "#92400E" }}>
+                <span style={{ fontWeight: "700" }}>テレビ台組み立て</span><br />別途 ¥1,100
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+function resolutionLabel(tv) {
+  if (tv.resolution === "FHD") return "フルHD (1920x1080)";
+  if (tv.resolution === "HD") return "HD (1366x768)";
+  return "4K (3840x2160)";
+}
+function bestResolution(arr) {
+  if (arr.some(function(t) { return t.resolution === "4K"; })) return arr.filter(function(t) { return t.resolution === "4K"; }).map(function(t) { return t.id; });
+  if (arr.some(function(t) { return t.resolution === "FHD"; })) return arr.filter(function(t) { return t.resolution === "FHD"; }).map(function(t) { return t.id; });
+  return [];
+}
+function bestFrameRate(arr) {
+  var max = arr.reduce(function(m, t) { var v = parseInt(t.specs.frameRate); return v > m ? v : m; }, 0);
+  return arr.filter(function(t) { return parseInt(t.specs.frameRate) === max; }).map(function(t) { return t.id; });
+}
+function bestHdmi(arr) {
+  var mx = arr.reduce(function(m, t) { return t.specs.hdmi > m ? t.specs.hdmi : m; }, 0);
+  return arr.filter(function(t) { return t.specs.hdmi === mx; }).map(function(t) { return t.id; });
+}
+function bestUsb(arr) {
+  var mx = arr.reduce(function(m, t) { return t.specs.usb > m ? t.specs.usb : m; }, 0);
+  return arr.filter(function(t) { return t.specs.usb === mx; }).map(function(t) { return t.id; });
+}
+function bestSpeaker(arr) {
+  var mx = arr.reduce(function(m, t) { var v = parseInt(t.specs.speaker) || 0; return v > m ? v : m; }, 0);
+  if (mx === 0) return [];
+  return arr.filter(function(t) { return (parseInt(t.specs.speaker) || 0) === mx; }).map(function(t) { return t.id; });
+}
+function bestEco(arr) {
+  var mx = arr.reduce(function(m, t) { return t.specs.ecoStar > m ? t.specs.ecoStar : m; }, 0);
+  if (mx === 0) return [];
+  return arr.filter(function(t) { return t.specs.ecoStar === mx; }).map(function(t) { return t.id; });
+}
+function bestAnnualCost(arr) {
+  var vals = arr.filter(function(t) { return t.specs.annualCost !== "—"; }).map(function(t) { return { id: t.id, v: parseInt(t.specs.annualCost) }; });
+  if (vals.length === 0) return [];
+  var mn = vals.reduce(function(m, v) { return v.v < m ? v.v : m; }, vals[0].v);
+  return vals.filter(function(v) { return v.v === mn; }).map(function(v) { return v.id; });
+}
+
+function TVGuide() {
+  const [sizeFilter,    setSizeFilter]    = useState("すべて");
+  const [brandFilters,  setBrandFilters]  = useState(new Set());
+  const [featureFilters,setFeatureFilters]= useState(new Set());
+  const [sort,          setSort]          = useState("price");
+  const [openId,        setOpenId]        = useState(null);
+  const [comparing,     setComparing]     = useState([]);
+  const [showModal,     setShowModal]     = useState(false);
+
+  function toggleBrand(b) {
+    setBrandFilters(function(prev) {
+      var next = new Set(prev);
+      next.has(b) ? next.delete(b) : next.add(b);
+      return next;
+    });
+  }
+  function toggleFeature(k) {
+    setFeatureFilters(function(prev) {
+      var next = new Set(prev);
+      next.has(k) ? next.delete(k) : next.add(k);
+      return next;
+    });
+  }
+  function clearAll() { setBrandFilters(new Set()); setFeatureFilters(new Set()); setSizeFilter("すべて"); }
+
+  var filtered = allTvData.filter(function(tv) {
+    if (sizeFilter === "32型" && tv.size !== 32) return false;
+    if (sizeFilter === "43型" && tv.size < 40 && tv.size !== 43) return false;
+    if (sizeFilter === "43型" && tv.size >= 45) return false;
+    if (sizeFilter === "50型以上" && tv.size < 45) return false;
+    if (brandFilters.size > 0 && !brandFilters.has(tv.brand)) return false;
+    if (featureFilters.size > 0) {
+      var checks = {
+        googleTV:    tv.googleTV,
+        airplay:     tv.airplay,
+        doubleSpeed: tv.doubleSpeed,
+        twoScreen:   tv.twoScreen,
+        netVideo:    tv.netVideo,
+        oled:        tv.type.includes("有機EL"),
+        miniLED:     tv.type.includes("miniLED"),
+        bdDrive:     tv.bdDrive
+      };
+      var featureArr = Array.from(featureFilters);
+      for (var fi = 0; fi < featureArr.length; fi++) { if (!checks[featureArr[fi]]) return false; }
+    }
+    return true;
+  });
+
+  var sorted = filtered.slice().sort(function(a, b) {
+    if (sort === "priceDesc") return b.price - a.price;
+    return a.price - b.price;
+  });
+
+  function toggleCompare(id) {
+    setComparing(function(prev) {
+      if (prev.includes(id)) return prev.filter(function(x) { return x !== id; });
+      if (prev.length < 3) return prev.concat([id]);
+      return prev;
+    });
+  }
+
+  var compareList = allTvData.filter(function(t) { return comparing.includes(t.id); });
+  var priceArr = filtered.length > 0 ? filtered.map(function(t){ return t.price; }) : [0];
+  var minPrice = Math.min.apply(null, priceArr);
+
+  function brandColor(b) { return BRAND_COLORS[b] || "#64748B"; }
+
+  var activeCount = brandFilters.size + featureFilters.size + (sizeFilter !== "すべて" ? 1 : 0);
+
+  return (
+    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "Hiragino Sans", color: "#1E293B" }}>
+
+      {/* ── Header ── */}
+      <div style={{ background: "linear-gradient(135deg, #0F2545 0%, #1E3A5F 100%)", padding: "16px 18px 14px", color: "#fff" }}>
+        <div style={{ maxWidth: "1020px", margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "4px" }}>
+            <span style={{ fontSize: "22px" }}>🏪</span>
+            <div>
+              <div style={{ fontSize: "18px", fontWeight: "800" }}>テレビ 選び方ガイド</div>
+              <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)" }}>ビックカメラ川崎店 ／ 2026年5月 ／ 32型7機種 + 43型14機種</div>
+            </div>
+          </div>
+          <div style={{ background: "rgba(255,255,255,0.1)", borderRadius: "8px", padding: "8px 12px", fontSize: "11px", color: "rgba(255,255,255,0.8)", marginTop: "8px", borderLeft: "3px solid #FBBF24" }}>
+            💬 <strong>スタッフより：</strong>メーカー・機能は複数選択できます。「＋比較」で最大3機種を横並び比較できます！
+          </div>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: "1020px", margin: "0 auto", padding: "14px 12px" }}>
+
+        {/* ── Filters ── */}
+        <div style={{ background: "#fff", borderRadius: "12px", padding: "12px 14px", marginBottom: "12px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
+
+          {/* Size */}
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "11px", fontWeight: "700", color: "#64748B", minWidth: "60px" }}>📐 サイズ</span>
+            {SIZES.map(function(s) { return (
+              <button key={s} onClick={function(){ setSizeFilter(s); }} style={{
+                padding: "5px 12px", borderRadius: "20px", cursor: "pointer", fontSize: "11px", fontWeight: "600",
+                border: sizeFilter === s ? "2px solid #1D4ED8" : "2px solid #E2E8F0",
+                background: sizeFilter === s ? "#1D4ED8" : "#F8FAFC",
+                color: sizeFilter === s ? "#fff" : "#475569"
+              }}>{s}</button>
+            ); })}
+          </div>
+
+          {/* Brand — multi-select */}
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "11px", fontWeight: "700", color: "#64748B", minWidth: "60px" }}>🏭 メーカー</span>
+            {BRANDS_LIST.map(function(b) {
+              var active = brandFilters.has(b);
+              var bc = brandColor(b);
+              return (
+                <button key={b} onClick={function(){ toggleBrand(b); }} style={{
+                  padding: "5px 12px", borderRadius: "20px", cursor: "pointer", fontSize: "11px", fontWeight: "700",
+                  border: active ? "2px solid " + bc : "2px solid #E2E8F0",
+                  background: active ? bc : "#F8FAFC",
+                  color: active ? "#fff" : bc,
+                  position: "relative"
+                }}>
+                  {active && <span style={{ marginRight: "3px" }}>✓</span>}{b}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Feature — multi-select */}
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "11px", fontWeight: "700", color: "#64748B", minWidth: "60px" }}>⚙️ 機能</span>
+            {FEATURE_OPTS.map(function(f) {
+              var active = featureFilters.has(f.key);
+              return (
+                <button key={f.key} onClick={function(){ toggleFeature(f.key); }} style={{
+                  padding: "5px 11px", borderRadius: "20px", cursor: "pointer", fontSize: "11px", fontWeight: "600",
+                  border: active ? "2px solid #0F766E" : "2px solid #E2E8F0",
+                  background: active ? "#0F766E" : "#F8FAFC",
+                  color: active ? "#fff" : "#475569"
+                }}>
+                  {active && <span style={{ marginRight: "3px" }}>✓</span>}{f.label}
+                </button>
+              );
+            })}
+            <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: "8px" }}>
+              {activeCount > 0 && (
+                <button onClick={clearAll} style={{
+                  padding: "4px 10px", borderRadius: "6px", cursor: "pointer", fontSize: "10px", fontWeight: "700",
+                  border: "1.5px solid #FDA4AF", background: "#FFF1F2", color: "#E11D48"
+                }}>× 絞り込みをリセット</button>
+              )}
+              <select value={sort} onChange={function(e){ setSort(e.target.value); }} style={{ padding: "4px 7px", borderRadius: "6px", border: "1.5px solid #CBD5E1", fontSize: "11px", color: "#334155", background: "#fff", cursor: "pointer" }}>
+                {SORT_OPTS.map(function(s) { return <option key={s.key} value={s.key}>{s.label}</option>; })}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Result count ── */}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
+          <span style={{ fontSize: "11px", color: "#94A3B8" }}>{sorted.length}機種を表示中</span>
+          {activeCount > 0 && (
+            <span style={{ fontSize: "10px", background: "#DBEAFE", color: "#1E40AF", padding: "1px 8px", borderRadius: "10px", fontWeight: "700" }}>
+              {activeCount}件の絞り込み中
+            </span>
+          )}
+          {sorted.length === 0 && (
+            <span style={{ fontSize: "11px", color: "#EF4444", fontWeight: "700" }}>
+              条件に合う機種がありません — 絞り込みを変更してください
+            </span>
+          )}
+        </div>
+
+        {/* ── Cards ── */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(195px, 1fr))", gap: "8px", marginBottom: "20px" }}>
+          {sorted.map(function(tv) {
+            var isComparing = comparing.includes(tv.id);
+            var isOpen      = openId === tv.id;
+            var bc          = brandColor(tv.brand);
+            var noteStr    = tv.note || "";
+            var isUnavail   = noteStr.includes("品切れ") || noteStr.includes("生産完了");
+
+            return (
+              <div key={tv.id} style={{
+                background: "#fff", borderRadius: "12px",
+                border: isComparing ? "2px solid " + bc : "2px solid #E2E8F0",
+                overflow: "hidden",
+                boxShadow: isComparing ? "0 0 0 3px " + bc + "22" : "0 1px 5px rgba(0,0,0,0.05)",
+                opacity: isUnavail ? 0.72 : 1
+              }}>
+                {/* Color bar */}
+                <div style={{ height: "3px", background: bc }} />
+
+                <div style={{ padding: "10px 12px" }}>
+                  {/* ─ Brand + Size badge ─ */}
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
+                    <span style={{
+                      fontSize: "12px", fontWeight: "800", color: bc,
+                      letterSpacing: "-0.2px"
+                    }}>{tv.brand}</span>
+                    <span style={{
+                      fontSize: "10px", fontWeight: "700", padding: "1px 7px", borderRadius: "10px",
+                      background: bc + "18", color: bc
+                    }}>{tv.size}型</span>
+                  </div>
+
+                  {/* ─ Model ─ */}
+                  <div style={{ fontSize: "14px", fontWeight: "800", color: "#1E293B", marginBottom: "7px", letterSpacing: "-0.3px" }}>{tv.model}</div>
+
+                  {/* ─ Type + status badges ─ */}
+                  <div style={{ display: "flex", gap: "3px", flexWrap: "wrap", marginBottom: "8px" }}>
+                    <span style={{
+                      fontSize: "9px", fontWeight: "800", padding: "1px 6px", borderRadius: "3px",
+                      background: tv.type.includes("有機EL") ? "#EDE9FE" : tv.type.includes("miniLED") ? "#FEF3C7" : "#DBEAFE",
+                      color:      tv.type.includes("有機EL") ? "#5B21B6" : tv.type.includes("miniLED") ? "#92400E" : "#1E40AF"
+                    }}>{tv.type}</span>
+                    {tv.price === minPrice && <span style={{ fontSize: "9px", fontWeight: "800", padding: "1px 6px", borderRadius: "3px", background: "#DCFCE7", color: "#166534" }}>最安</span>}
+                    {isUnavail && <span style={{ fontSize: "9px", fontWeight: "700", padding: "1px 6px", borderRadius: "3px", background: "#FEF2F2", color: "#DC2626" }}>⚠️在庫なし</span>}
+                    {!isUnavail && noteStr.includes("在庫限") && <span style={{ fontSize: "9px", fontWeight: "700", padding: "1px 6px", borderRadius: "3px", background: "#FFF7ED", color: "#C2410C" }}>残りわずか</span>}
+                  </div>
+
+                  {/* ─ Price ─ */}
+                  <div style={{ marginBottom: "10px" }}>
+                    <div style={{ fontSize: "21px", fontWeight: "800", color: "#DC2626", letterSpacing: "-0.5px", lineHeight: 1 }}>
+                      ¥{fmt(tv.price)}
+                      <span style={{ fontSize: "11px", fontWeight: "500", color: "#94A3B8", marginLeft: "4px" }}>税込</span>
+                    </div>
+                  </div>
+
+                  {/* ─ Spec grid ─ */}
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px", marginBottom: "10px" }}>
+                    {[
+                      { l: "パネル",    v: tv.panel },
+                      { l: "チューナー", v: tv.specs.tuner },
+                      { l: "HDMI",     v: tv.specs.hdmi + "端子" },
+                      { l: "スピーカー", v: tv.specs.speaker || "—" }
+                    ].map(function(s) { return (
+                      <div key={s.l} style={{ background: "#F8FAFC", borderRadius: "5px", padding: "4px 7px" }}>
+                        <div style={{ fontSize: "8px", color: "#94A3B8", fontWeight: "600" }}>{s.l}</div>
+                        <div style={{ fontSize: "10px", fontWeight: "700", color: "#1E293B", marginTop: "1px" }}>{s.v}</div>
+                      </div>
+                    ); })}
+                    {tv.specs.ecoStar > 0 && (
+                      <div style={{ background: "#F8FAFC", borderRadius: "5px", padding: "4px 7px" }}>
+                        <div style={{ fontSize: "8px", color: "#94A3B8", fontWeight: "600" }}>省エネ評価</div>
+                        <div style={{ fontSize: "10px", fontWeight: "700", color: "#1E293B", marginTop: "1px" }}>{tv.specs.ecoStar} / 5</div>
+                      </div>
+                    )}
+                    {tv.specs.annualCost !== "—" && (
+                      <div style={{ background: "#F8FAFC", borderRadius: "5px", padding: "4px 7px" }}>
+                        <div style={{ fontSize: "8px", color: "#94A3B8", fontWeight: "600" }}>年間電気代</div>
+                        <div style={{ fontSize: "10px", fontWeight: "700", color: "#1E293B", marginTop: "1px" }}>{tv.specs.annualCost}</div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ─ Feature chips (対応のみ) ─ */}
+                  <div style={{ display: "flex", gap: "3px", flexWrap: "wrap", marginBottom: "10px" }}>
+                    {[
+                      { l: "GoogleTV",  on: tv.googleTV },
+                      { l: "AirPlay",   on: tv.airplay },
+                      { l: "倍速",      on: tv.doubleSpeed },
+                      { l: "2画面",     on: tv.twoScreen },
+                      { l: "BD内蔵",    on: tv.bdDrive }
+                    ].filter(function(c){ return c.on; }).map(function(c) { return (
+                      <span key={c.l} style={{ fontSize: "9px", padding: "2px 6px", borderRadius: "3px", fontWeight: "700", background: "#DCFCE7", color: "#166534" }}>✓{c.l}</span>
+                    ); })}
+                  </div>
+
+                  {/* ─ Buttons ─ */}
+                  <div style={{ display: "flex", gap: "5px" }}>
+                    <button onClick={function(){ setOpenId(isOpen ? null : tv.id); }} style={{
+                      flex: 1, padding: "7px 0", borderRadius: "7px", cursor: "pointer",
+                      fontSize: "11px", fontWeight: "700", border: "none",
+                      background: isOpen ? bc : "#F1F5F9",
+                      color: isOpen ? "#fff" : "#64748B"
+                    }}>
+                      {isOpen ? "▲ 閉じる" : "詳しく見る"}
+                    </button>
+                    <button onClick={function(){ toggleCompare(tv.id); }} style={{
+                      padding: "7px 10px", borderRadius: "7px", cursor: "pointer",
+                      fontSize: "11px", fontWeight: "800",
+                      border: isComparing ? "2px solid " + bc : "2px solid #E2E8F0",
+                      background: isComparing ? bc : "#fff",
+                      color: isComparing ? "#fff" : "#94A3B8"
+                    }}>
+                      {isComparing ? "✓" : "+比較"}
+                    </button>
+                  </div>
+                </div>
+
+                {/* ─ Detail panel ─ */}
+                {isOpen && (
+                  <div style={{ borderTop: "2px solid #F1F5F9", padding: "12px", background: "#FAFBFE" }}>
+                    <div style={{ fontSize: "12px", fontWeight: "700", color: "#1E293B", marginBottom: "9px", lineHeight: "1.5", borderLeft: "3px solid " + bc, paddingLeft: "8px" }}>
+                      {tv.icon} {tv.catchcopy}
+                    </div>
+                    <div style={{ marginBottom: "8px" }}>
+                      <div style={{ fontSize: "10px", fontWeight: "800", color: "#059669", marginBottom: "3px" }}>✅ こんな方に</div>
+                      {tv.forWho.map(function(w, i) { return (
+                        <div key={i} style={{ fontSize: "11px", color: "#374151", display: "flex", gap: "4px", padding: "1px 0" }}>
+                          <span style={{ color: "#059669" }}>•</span>{w}
+                        </div>
+                      ); })}
+                    </div>
+                    {tv.notForWho.length > 0 && (
+                      <div style={{ marginBottom: "8px" }}>
+                        <div style={{ fontSize: "10px", fontWeight: "800", color: "#DC2626", marginBottom: "3px" }}>⚠️ こんな方には不向き</div>
+                        {tv.notForWho.map(function(w, i) { return (
+                          <div key={i} style={{ fontSize: "11px", color: "#64748B", display: "flex", gap: "4px", padding: "1px 0" }}>
+                            <span style={{ color: "#DC2626" }}>•</span>{w}
+                          </div>
+                        ); })}
+                      </div>
+                    )}
+                    {tv.strongPoints.map(function(p, i) { return (
+                      <div key={i} style={{ display: "flex", gap: "7px", marginBottom: "6px", alignItems: "flex-start" }}>
+                        <span style={{ fontSize: "15px", minWidth: "18px" }}>{p.icon}</span>
+                        <div>
+                          <div style={{ fontSize: "11px", fontWeight: "800", color: "#1E293B" }}>{p.title}</div>
+                          <div style={{ fontSize: "10px", color: "#64748B", lineHeight: "1.5" }}>{p.body}</div>
+                        </div>
+                      </div>
+                    ); })}
+                    <div style={{ marginTop: "8px", padding: "8px 10px", background: "#EFF6FF", borderRadius: "6px", borderLeft: "3px solid " + bc }}>
+                      <div style={{ fontSize: "9px", fontWeight: "800", color: "#1E40AF", marginBottom: "3px" }}>💬 スタッフより</div>
+                      <div style={{ fontSize: "10px", color: "#1E3A8A", lineHeight: "1.5" }}>{tv.staffComment}</div>
+                    </div>
+
+                    {/* 録画機能 */}
+                    <div style={{ marginTop: "8px", padding: "8px 10px", background: "#F0FDF4", borderRadius: "6px" }}>
+                      <div style={{ fontSize: "9px", fontWeight: "800", color: "#166534", marginBottom: "4px" }}>📼 録画機能</div>
+                      <div style={{ fontSize: "10px", color: "#374151", marginBottom: "4px" }}>{tv.recording.detail}</div>
+                      <div style={{ display: "flex", gap: "3px", flexWrap: "wrap" }}>
+                        {tv.recording.timeshift && <span style={{ fontSize: "9px", padding: "1px 6px", borderRadius: "3px", background: "#DCFCE7", color: "#166534", fontWeight: "700" }}>タイムシフト</span>}
+                        {tv.recording.simultaneous && <span style={{ fontSize: "9px", padding: "1px 6px", borderRadius: "3px", background: "#DCFCE7", color: "#166534", fontWeight: "700" }}>裏番組録画</span>}
+                        {tv.bdDrive && <span style={{ fontSize: "9px", padding: "1px 6px", borderRadius: "3px", background: "#DCFCE7", color: "#166534", fontWeight: "700" }}>BD録画</span>}
+                      </div>
+                    </div>
+
+                    {/* 配信サービス */}
+                    {tv.streaming.length > 0 && (
+                      <div style={{ marginTop: "6px", padding: "8px 10px", background: "#F8FAFC", borderRadius: "6px" }}>
+                        <div style={{ fontSize: "9px", fontWeight: "800", color: "#475569", marginBottom: "5px" }}>📺 対応配信サービス</div>
+                        <div style={{ display: "flex", gap: "3px", flexWrap: "wrap" }}>
+                          {tv.streaming.map(function(s) { return (
+                            <span key={s} style={{ fontSize: "9px", padding: "2px 6px", borderRadius: "3px", background: "#E0F2FE", color: "#0369A1", fontWeight: "600" }}>{s}</span>
+                          ); })}
+                        </div>
+                      </div>
+                    )}
+                    {tv.streaming.length === 0 && (
+                      <div style={{ marginTop: "6px", padding: "7px 10px", background: "#FEF2F2", borderRadius: "6px" }}>
+                        <div style={{ fontSize: "10px", color: "#DC2626", fontWeight: "700" }}>📺 配信サービス非対応（Wi-Fiなし）</div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── 費用シミュレーター ── */}
+        <FeeCalculator hasCompare={comparing.length > 0} />
+      </div>
+
+      {/* ── Sticky compare tray ── */}
+      {comparing.length > 0 && (
+        <div style={{
+          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100,
+          background: "#0F2545", borderTop: "3px solid #3B82F6",
+          boxShadow: "0 -4px 24px rgba(0,0,0,0.4)", padding: "10px 16px 12px"
+        }}>
+          <div style={{ maxWidth: "1020px", margin: "0 auto", display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+            <div style={{ color: "rgba(255,255,255,0.55)", fontSize: "11px", whiteSpace: "nowrap" }}>比較中 {comparing.length}/3</div>
+            <div style={{ display: "flex", gap: "7px", flex: 1, flexWrap: "wrap" }}>
+              {compareList.map(function(tv) { return (
+                <div key={tv.id} style={{
+                  display: "flex", alignItems: "center", gap: "6px",
+                  background: "rgba(255,255,255,0.08)", borderRadius: "8px",
+                  padding: "5px 10px", border: "1.5px solid rgba(255,255,255,0.15)"
+                }}>
+                  <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: brandColor(tv.brand), flexShrink: 0 }} />
+                  <div>
+                    <div style={{ color: brandColor(tv.brand), fontSize: "9px", fontWeight: "700" }}>{tv.brand}</div>
+                    <div style={{ color: "#fff", fontSize: "11px", fontWeight: "800" }}>{tv.model}</div>
+                  </div>
+                  <button onClick={function(){ toggleCompare(tv.id); }} style={{ background: "none", border: "none", color: "rgba(255,255,255,0.4)", cursor: "pointer", fontSize: "14px", lineHeight: 1, padding: "0 2px", marginLeft: "2px" }}>×</button>
+                </div>
+              ); })}
+              {Array.apply(null, Array(3 - comparing.length)).map(function(_, i) { return (
+                <div key={i} style={{
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  background: "rgba(255,255,255,0.04)", borderRadius: "8px",
+                  padding: "5px 14px", border: "1.5px dashed rgba(255,255,255,0.12)",
+                  color: "rgba(255,255,255,0.2)", fontSize: "10px"
+                }}>+ 追加</div>
+              ); })}
+            </div>
+            <div style={{ display: "flex", gap: "6px" }}>
+              <button onClick={function(){ setComparing([]); }} style={{ padding: "7px 13px", borderRadius: "7px", cursor: "pointer", fontSize: "11px", fontWeight: "700", border: "1.5px solid rgba(255,255,255,0.2)", background: "transparent", color: "rgba(255,255,255,0.55)" }}>クリア</button>
+              <button onClick={function(){ setShowModal(true); }} disabled={comparing.length < 2} style={{
+                padding: "7px 16px", borderRadius: "7px", cursor: comparing.length >= 2 ? "pointer" : "not-allowed",
+                fontSize: "12px", fontWeight: "800", border: "none",
+                background: comparing.length >= 2 ? "#3B82F6" : "rgba(255,255,255,0.1)",
+                color: comparing.length >= 2 ? "#fff" : "rgba(255,255,255,0.3)"
+              }}>📊 比較する{comparing.length < 2 ? "（2機種以上）" : ""}</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Compare Modal ── */}
+      {showModal && compareList.length >= 2 && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.72)", display: "flex", alignItems: "center", justifyContent: "center", padding: "10px" }}
+          onClick={function(e){ if (e.target === e.currentTarget) setShowModal(false); }}>
+          <div style={{ background: "#fff", borderRadius: "16px", width: "100%", maxWidth: "920px", maxHeight: "92vh", overflow: "hidden", display: "flex", flexDirection: "column", boxShadow: "0 24px 60px rgba(0,0,0,0.45)" }}>
+
+            {/* Modal header */}
+            <div style={{ background: "#0F2545", padding: "14px 20px", display: "flex", justifyContent: "space-between", alignItems: "center", flexShrink: 0 }}>
+              <span style={{ color: "#fff", fontWeight: "800", fontSize: "15px" }}>📊 比較表 — {compareList.length}機種</span>
+              <button onClick={function(){ setShowModal(false); }} style={{ background: "rgba(255,255,255,0.15)", border: "none", color: "#fff", width: "30px", height: "30px", borderRadius: "50%", cursor: "pointer", fontSize: "16px", fontWeight: "700" }}>×</button>
+            </div>
+
+            {/* Modal body */}
+            <div style={{ overflowY: "auto", flex: 1 }}>
+              <div style={{ overflowX: "auto" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "12px", minWidth: "460px" }}>
+                  <thead>
+                    <tr style={{ background: "#F8FAFC", borderBottom: "2px solid #E2E8F0" }}>
+                      <td style={{ padding: "14px 18px", color: "#64748B", fontSize: "11px", fontWeight: "700", width: "110px" }}>項目</td>
+                      {compareList.map(function(tv) {
+                        var bc = brandColor(tv.brand);
+                        return (
+                          <td key={tv.id} style={{ padding: "12px 14px", textAlign: "center", borderLeft: "2px solid #E2E8F0" }}>
+                            <div style={{ width: "100%", height: "3px", borderRadius: "2px", background: bc, marginBottom: "6px" }} />
+                            <div style={{ fontSize: "12px", fontWeight: "800", color: bc }}>{tv.brand}</div>
+                            <div style={{ fontWeight: "800", color: "#1E293B", fontSize: "14px", marginTop: "1px" }}>{tv.model}</div>
+                            <div style={{ fontSize: "10px", background: bc + "15", color: bc, borderRadius: "10px", padding: "1px 7px", display: "inline-block", marginTop: "4px", fontWeight: "700" }}>{tv.size}型 / {tv.type}</div>
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* 価格 */}
+                    <tr style={{ background: "#EFF6FF" }}>
+                      <td colSpan={compareList.length + 1} style={{ padding: "5px 18px", fontSize: "10px", fontWeight: "800", color: "#1E40AF" }}>💴 価格</td>
+                    </tr>
+                    {[
+                      { l: "税込価格", fn: function(tv) { return "¥" + fmt(tv.price); }, bestFn: function(arr) { return [arr.reduce(function(m,t) { return t.price < m.price ? t : m; }).id]; }, big: true }
+                    ].map(function(row) { return (
+                      <tr key={row.l} style={{ background: "#fff", borderBottom: "1px solid #F1F5F9" }}>
+                        <td style={{ padding: "10px 18px", color: "#64748B", fontSize: "11px", fontWeight: "600", borderRight: "1px solid #F1F5F9" }}>{row.l}</td>
+                        {compareList.map(function(tv) {
+                          var isBest = row.bestFn(compareList).includes(tv.id);
+                          return (
+                            <td key={tv.id} style={{ padding: "10px 14px", textAlign: "center", borderLeft: "1px solid #F1F5F9", background: isBest ? "#F0FDF4" : "transparent" }}>
+                              <div style={{ fontWeight: isBest?"800":"500", color: isBest?"#166534":"#334155", fontSize: "16px" }}>{row.fn(tv)}</div>
+                              {isBest && <div style={{ fontSize: "9px", color: "#059669", fontWeight: "700" }}>◀ 最安</div>}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ); })}
+
+                    {/* 画質・パネル */}
+                    <tr style={{ background: "#FFF7ED" }}>
+                      <td colSpan={compareList.length + 1} style={{ padding: "5px 18px", fontSize: "10px", fontWeight: "800", color: "#C2410C" }}>🖼️ 画質・パネル</td>
+                    </tr>
+                    {[
+                      { l: "パネル種類", fn: function(tv) { return tv.type; } },
+                      { l: "パネル詳細", fn: function(tv) { return tv.panel; } },
+                      { l: "解像度", fn: resolutionLabel, bestFn: bestResolution },
+                      { l: "フレームレート", fn: function(tv) { return tv.specs.frameRate; }, bestFn: bestFrameRate },
+                      { l: "倍速表示", fn: function(tv) { return tv.doubleSpeed ? "✓ 対応" : "—"; }, bool: true, bestFn: function(arr) { return arr.filter(function(t) { return t.doubleSpeed; }).map(function(t) { return t.id; }); } }
+                    ].map(function(row, ri) { return (
+                      <tr key={row.l} style={{ background: ri%2===0?"#fff":"#FFFBF5", borderBottom: "1px solid #F1F5F9" }}>
+                        <td style={{ padding: "10px 18px", color: "#64748B", fontSize: "11px", fontWeight: "600", borderRight: "1px solid #F1F5F9" }}>{row.l}</td>
+                        {compareList.map(function(tv) {
+                          var best = row.bestFn ? row.bestFn(compareList) : [];
+                          var isBest = best.includes(tv.id);
+                          var val = row.fn(tv);
+                          return (
+                            <td key={tv.id} style={{ padding: "10px 14px", textAlign: "center", borderLeft: "1px solid #F1F5F9", background: isBest?"#FFF7ED":"transparent" }}>
+                              <span style={{ fontWeight: isBest?"800":"400", color: row.bool?(val.includes("✓")?"#059669":"#CBD5E1"):isBest?"#C2410C":"#334155", fontSize: "12px" }}>{val}</span>
+                              {isBest && !row.bool && <div style={{ fontSize: "9px", color: "#C2410C", fontWeight: "700" }}>◀ 優秀</div>}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ); })}
+
+                    {/* 接続・端子 */}
+                    <tr style={{ background: "#F5F3FF" }}>
+                      <td colSpan={compareList.length + 1} style={{ padding: "5px 18px", fontSize: "10px", fontWeight: "800", color: "#5B21B6" }}>🔌 接続・端子</td>
+                    </tr>
+                    {[
+                      { l: "チューナー", fn: function(tv) { return tv.specs.tuner; } },
+                      { l: "HDMI端子", fn: function(tv) { return tv.specs.hdmi + "端子（ARC×" + tv.specs.hdmiArc + "）"; }, bestFn: bestHdmi },
+                      { l: "USB端子", fn: function(tv) { return tv.specs.usb + "端子"; }, bestFn: bestUsb },
+                      { l: "Wi-Fi", fn: function(tv) { return tv.specs.wifi ? "✓ 内蔵" : "— なし"; }, bool: true, bestFn: function(arr) { return arr.filter(function(t) { return t.specs.wifi; }).map(function(t) { return t.id; }); } },
+                      { l: "Bluetooth", fn: function(tv) { return tv.specs.bluetooth ? "✓ 内蔵" : "— なし"; }, bool: true, bestFn: function(arr) { return arr.filter(function(t) { return t.specs.bluetooth; }).map(function(t) { return t.id; }); } }
+                    ].map(function(row, ri) { return (
+                      <tr key={row.l} style={{ background: ri%2===0?"#fff":"#FAF9FF", borderBottom: "1px solid #F1F5F9" }}>
+                        <td style={{ padding: "10px 18px", color: "#64748B", fontSize: "11px", fontWeight: "600", borderRight: "1px solid #F1F5F9" }}>{row.l}</td>
+                        {compareList.map(function(tv) {
+                          var best = row.bestFn ? row.bestFn(compareList) : [];
+                          var isBest = best.includes(tv.id);
+                          var val = row.fn(tv);
+                          return (
+                            <td key={tv.id} style={{ padding: "10px 14px", textAlign: "center", borderLeft: "1px solid #F1F5F9", background: isBest?"#F5F3FF":"transparent" }}>
+                              <span style={{ fontWeight: isBest?"800":"400", color: row.bool?(val.includes("✓")?"#059669":"#CBD5E1"):isBest?"#5B21B6":"#334155", fontSize: "12px" }}>{val}</span>
+                              {isBest && !row.bool && <div style={{ fontSize: "9px", color: "#5B21B6", fontWeight: "700" }}>◀ 最多</div>}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ); })}
+
+                    {/* スマート機能 */}
+                    <tr style={{ background: "#F0FDF4" }}>
+                      <td colSpan={compareList.length + 1} style={{ padding: "5px 18px", fontSize: "10px", fontWeight: "800", color: "#166534" }}>📱 スマート・配信機能</td>
+                    </tr>
+                    {[
+                      { l: "Google TV", fn: function(tv) { return tv.googleTV ? "✓" : "—"; }, bool: true, bestFn: function(arr) { return arr.filter(function(t) { return t.googleTV; }).map(function(t) { return t.id; }); } },
+                      { l: "AirPlay 2", fn: function(tv) { return tv.airplay ? "✓" : "—"; }, bool: true, bestFn: function(arr) { return arr.filter(function(t) { return t.airplay; }).map(function(t) { return t.id; }); } },
+                      { l: "ネット動画", fn: function(tv) { return tv.netVideo ? "✓" : "—"; }, bool: true, bestFn: function(arr) { return arr.filter(function(t) { return t.netVideo; }).map(function(t) { return t.id; }); } }
+                    ].map(function(row, ri) { return (
+                      <tr key={row.l} style={{ background: ri%2===0?"#fff":"#F9FEF9", borderBottom: "1px solid #F1F5F9" }}>
+                        <td style={{ padding: "10px 18px", color: "#64748B", fontSize: "11px", fontWeight: "600", borderRight: "1px solid #F1F5F9" }}>{row.l}</td>
+                        {compareList.map(function(tv) {
+                          var isBest = row.bestFn(compareList).includes(tv.id);
+                          var val = row.fn(tv);
+                          return (
+                            <td key={tv.id} style={{ padding: "10px 14px", textAlign: "center", borderLeft: "1px solid #F1F5F9", background: isBest?"#F0FDF4":"transparent" }}>
+                              <span style={{ fontSize: "15px", color: val==="✓"?"#059669":"#CBD5E1", fontWeight: "800" }}>{val}</span>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ); })}
+
+                    {/* 音響・その他機能 */}
+                    <tr style={{ background: "#FEF2F2" }}>
+                      <td colSpan={compareList.length + 1} style={{ padding: "5px 18px", fontSize: "10px", fontWeight: "800", color: "#991B1B" }}>🔊 音響・その他機能</td>
+                    </tr>
+                    {[
+                      { l: "スピーカー", fn: function(tv) { return tv.specs.speaker || "—"; }, bestFn: bestSpeaker },
+                      { l: "2画面表示", fn: function(tv) { return tv.twoScreen ? "✓" : "—"; }, bool: true, bestFn: function(arr) { return arr.filter(function(t) { return t.twoScreen; }).map(function(t) { return t.id; }); } },
+                      { l: "BD内蔵", fn: function(tv) { return tv.bdDrive ? "✓" : "—"; }, bool: true, bestFn: function(arr) { return arr.filter(function(t) { return t.bdDrive; }).map(function(t) { return t.id; }); } }
+                    ].map(function(row, ri) { return (
+                      <tr key={row.l} style={{ background: ri%2===0?"#fff":"#FFF5F5", borderBottom: "1px solid #F1F5F9" }}>
+                        <td style={{ padding: "10px 18px", color: "#64748B", fontSize: "11px", fontWeight: "600", borderRight: "1px solid #F1F5F9" }}>{row.l}</td>
+                        {compareList.map(function(tv) {
+                          var best = row.bestFn ? row.bestFn(compareList) : [];
+                          var isBest = best.includes(tv.id);
+                          var val = row.fn(tv);
+                          return (
+                            <td key={tv.id} style={{ padding: "10px 14px", textAlign: "center", borderLeft: "1px solid #F1F5F9", background: isBest?"#FEF2F2":"transparent" }}>
+                              <span style={{ fontWeight: isBest?"800":"400", color: row.bool?(val==="✓"?"#059669":"#CBD5E1"):isBest?"#991B1B":"#334155", fontSize: "12px" }}>{val}</span>
+                              {isBest && !row.bool && <div style={{ fontSize: "9px", color: "#991B1B", fontWeight: "700" }}>◀ 最大</div>}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ); })}
+
+                    {/* 省エネ */}
+                    <tr style={{ background: "#ECFDF5" }}>
+                      <td colSpan={compareList.length + 1} style={{ padding: "5px 18px", fontSize: "10px", fontWeight: "800", color: "#065F46" }}>🌿 省エネ</td>
+                    </tr>
+                    {[
+                      { l: "省エネ評価", fn: function(tv) { return tv.specs.ecoStar > 0 ? tv.specs.ecoStar + " / 5.0" : "—"; }, bestFn: bestEco },
+                      { l: "年間電気代", fn: function(tv) { return tv.specs.annualCost !== "—" ? tv.specs.annualCost : "—"; }, bestFn: bestAnnualCost }
+                    ].map(function(row, ri) { return (
+                      <tr key={row.l} style={{ background: ri%2===0?"#fff":"#F0FDF9", borderBottom: "1px solid #F1F5F9" }}>
+                        <td style={{ padding: "10px 18px", color: "#64748B", fontSize: "11px", fontWeight: "600", borderRight: "1px solid #F1F5F9" }}>{row.l}</td>
+                        {compareList.map(function(tv) {
+                          var best = row.bestFn(compareList);
+                          var isBest = best.includes(tv.id);
+                          return (
+                            <td key={tv.id} style={{ padding: "10px 14px", textAlign: "center", borderLeft: "1px solid #F1F5F9", background: isBest?"#ECFDF5":"transparent" }}>
+                              <span style={{ fontWeight: isBest?"800":"400", color: isBest?"#065F46":"#334155", fontSize: "12px" }}>{row.fn(tv)}</span>
+                              {isBest && <div style={{ fontSize: "9px", color: "#059669", fontWeight: "700" }}>◀ 優秀</div>}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ); })}
+
+                    {/* 録画・配信 */}
+                    <tr style={{ background: "#F0FDF4" }}>
+                      <td colSpan={compareList.length + 1} style={{ padding: "5px 18px", fontSize: "10px", fontWeight: "800", color: "#166534" }}>📼 録画・配信</td>
+                    </tr>
+                    {[
+                      { l: "録画機能", fn: function(tv) { return tv.recording.detail; } },
+                      { l: "タイムシフト録画", fn: function(tv) { return tv.recording.timeshift ? "✓ 対応" : "—"; }, bool: true, bestFn: function(arr) { return arr.filter(function(t) { return t.recording.timeshift; }).map(function(t) { return t.id; }); } },
+                      { l: "裏番組録画", fn: function(tv) { return tv.recording.simultaneous ? "✓ 対応" : "—"; }, bool: true, bestFn: function(arr) { return arr.filter(function(t) { return t.recording.simultaneous; }).map(function(t) { return t.id; }); } },
+                      { l: "対応配信数", fn: function(tv) { return tv.streaming.length > 0 ? tv.streaming.length + "サービス" : "非対応"; }, bestFn: function(arr) { var mx = arr.reduce(function(m,t) { return t.streaming.length > m ? t.streaming.length : m; }, 0); if(mx===0) return []; return arr.filter(function(t) { return t.streaming.length === mx; }).map(function(t) { return t.id; }); } },
+                      { l: "対応配信サービス", fn: function(tv) { return tv.streaming.length > 0 ? tv.streaming.join(" / ") : "—"; } }
+                    ].map(function(row, ri) { return (
+                      <tr key={row.l} style={{ background: ri%2===0?"#fff":"#F9FEF9", borderBottom: "1px solid #F1F5F9" }}>
+                        <td style={{ padding: "10px 18px", color: "#64748B", fontSize: "11px", fontWeight: "600", borderRight: "1px solid #F1F5F9", whiteSpace: "nowrap" }}>{row.l}</td>
+                        {compareList.map(function(tv) {
+                          var best = row.bestFn ? row.bestFn(compareList) : [];
+                          var isBest = best.includes(tv.id);
+                          var val = row.fn(tv);
+                          return (
+                            <td key={tv.id} style={{ padding: "10px 14px", textAlign: "center", borderLeft: "1px solid #F1F5F9", background: isBest?"#F0FDF4":"transparent" }}>
+                              <span style={{ fontWeight: isBest?"800":"400", fontSize: "11px", color: row.bool?(val.includes("✓")?"#059669":"#CBD5E1"):isBest?"#166534":"#334155" }}>{val}</span>
+                              {isBest && !row.bool && <div style={{ fontSize: "9px", color: "#166534", fontWeight: "700" }}>◀ 最多</div>}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ); })}
+
+                    {/* スタッフ */}
+                    <tr style={{ background: "#EFF6FF" }}>
+                      <td colSpan={compareList.length + 1} style={{ padding: "5px 18px", fontSize: "10px", fontWeight: "800", color: "#1E40AF" }}>💬 スタッフコメント</td>
+                    </tr>
+                    <tr style={{ background: "#fff" }}>
+                      <td style={{ padding: "10px 18px", color: "#64748B", fontSize: "11px", fontWeight: "600", borderRight: "1px solid #F1F5F9", verticalAlign: "top" }}>特徴</td>
+                      {compareList.map(function(tv) { return (
+                        <td key={tv.id} style={{ padding: "10px 14px", borderLeft: "1px solid #F1F5F9", verticalAlign: "top" }}>
+                          <div style={{ fontSize: "11px", color: "#374151", lineHeight: "1.6" }}>{tv.staffComment}</div>
+                        </td>
+                      ); })}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Modal footer */}
+            <div style={{ padding: "11px 20px", borderTop: "1px solid #E2E8F0", background: "#F8FAFC", display: "flex", justifyContent: "space-between", alignItems: "center", flexShrink: 0 }}>
+              <button onClick={function(){ setComparing([]); setShowModal(false); }} style={{ background: "none", border: "1.5px solid #CBD5E1", color: "#64748B", padding: "7px 15px", borderRadius: "7px", cursor: "pointer", fontSize: "12px", fontWeight: "700" }}>選択をクリア</button>
+              <button onClick={function(){ setShowModal(false); }} style={{ background: "#1D4ED8", border: "none", color: "#fff", padding: "7px 20px", borderRadius: "7px", cursor: "pointer", fontSize: "12px", fontWeight: "800" }}>閉じる</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(TVGuide));
+  </script>
+</body>
+</html>
