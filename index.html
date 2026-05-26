@@ -7,18 +7,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #F1F5F9; }
-    button { font-family: inherit; }
-    select { font-family: inherit; }
-  </style>
+  <style>* { box-sizing: border-box; margin: 0; padding: 0; } body { background: #F1F5F9; } button { font-family: inherit; } select { font-family: inherit; }</style>
 </head>
 <body>
   <div id="root"></div>
   <script type="text/babel">
     const { useState } = React;
-
 
 const BRAND_COLORS = {
   "Panasonic":  "#1A56DB",
@@ -937,13 +931,687 @@ const allTvData = [
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
     note: "新製品・CB5,000円対象"
+  },
+  /* ─────────── 55型・65型・75型 追加 ─────────── */
+  {
+    id: 401, size: 55, brand: "Hisense", model: "55A6R",
+    price: 79800, point: 798, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💰", tagline: "55型最安派",
+    catchcopy: "55型4Kが約8万円！ネット動画対応の在庫限りコスパモデル",
+    forWho: ["とにかく安く55型が欲しい方", "ネット動画をメインに楽しむ方"],
+    notForWho: ["国内メーカーにこだわる方", "高画質機能を求める方"],
+    strongPoints: [
+      { icon: "💰", title: "55型4K最安値クラス", body: "国内メーカー同サイズの半額以下。コスト重視ならこれ一択" },
+      { icon: "📱", title: "ネット動画対応", body: "YouTube・Netflix等の主要配信に対応" },
+      { icon: "⚡", title: "在庫限り特価", body: "なくなり次第終了。今が買い時" }
+    ],
+    staffComment: "55型でこの価格はなかなかない。ネット動画対応で普段使いには十分。在庫限りなのでお早めに。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 3, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: false, detail: "外付けHDD録画対応（1番組）" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "hulu", "ABEMA", "TVer"],
+    note: "在庫限り"
+  },
+  {
+    id: 402, size: 55, brand: "Hisense", model: "55U7S",
+    price: 176000, point: 17600, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 3510,
+    icon: "🌈", tagline: "55型量子ドット価格相談",
+    catchcopy: "量子ドット×MiniLED×倍速×2画面！55型ハイセンス上位機",
+    forWho: ["量子ドット×MiniLEDの高画質を55型で体験したい方", "倍速＋2画面も必要な方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "🌈", title: "量子ドット×MiniLED", body: "広色域と高コントラストを両立。液晶の限界を超える映像表現" },
+      { icon: "⚡", title: "倍速＋2画面表示", body: "スポーツも残像なし＋2番組同時視聴" },
+      { icon: "💰", title: "価格はご相談", body: "表示176,000円より交渉余地あり" }
+    ],
+    staffComment: "量子ドット×MiniLED搭載で倍速・2画面も対応した55型上位機。省エネ評価なし。価格「ご相談ください」表記あり交渉可能。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "3,510円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "価格ご相談"
+  },
+  {
+    id: 403, size: 55, brand: "Hisense", model: "55U8S",
+    price: 231000, point: 2310, ecoStar: 2.8,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED 上位", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 3430,
+    icon: "✨", tagline: "55型ハイセンス最上位派",
+    catchcopy: "ハイセンス55型フラッグシップ！量子ドット×MiniLED上位モデル",
+    forWho: ["ハイセンスの最高画質を体験したい方", "コストを抑えつつ高画質を求める方"],
+    notForWho: ["2画面表示が必要な方（非対応）"],
+    strongPoints: [
+      { icon: "✨", title: "U8S最上位パネル", body: "U7Sより上位のMiniLEDパネル。より精密な輝度制御で高コントラスト" },
+      { icon: "🔊", title: "3スピーカー 40W", body: "前向きスピーカー搭載で音の広がりが違う" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツ・アニメで残像のないなめらか映像" }
+    ],
+    staffComment: "ハイセンス55型の現行フラッグシップ。U7Sより上位のパネルを搭載。省エネ評価2.8・年間電気代3,430円。ポイント1%に注意。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（3スピーカー）", frameRate: "120Hz", ecoStar: 2.8, annualCost: "3,430円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "ポイント1%"
+  },
+  {
+    id: 404, size: 65, brand: "Hisense", model: "65A6R",
+    price: 99000, point: 9900, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 3830,
+    icon: "💰", tagline: "65型最安派",
+    catchcopy: "65型4Kが約10万円！在庫限りコスパモデル",
+    forWho: ["とにかく安く65型が欲しい方", "ネット動画メインの方"],
+    notForWho: ["国内メーカーにこだわる方", "高画質機能を求める方"],
+    strongPoints: [
+      { icon: "💰", title: "65型4K最安値クラス", body: "10万円以下で65型4Kが手に入る破格の価格" },
+      { icon: "📱", title: "ネット動画対応", body: "主要配信サービスに対応" },
+      { icon: "📺", title: "同時録画1番組", body: "外付けHDD録画対応" }
+    ],
+    staffComment: "65型でこの価格はほぼ唯一。倍速・量子ドットはないシンプル設計だが、普段使いには十分。在庫限りのため早めに。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "3,830円", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: false, detail: "外付けHDD録画対応（1番組）" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "hulu", "ABEMA", "TVer"],
+    note: "在庫限り"
+  },
+  {
+    id: 405, size: 65, brand: "Hisense", model: "65U7R",
+    price: 109000, point: 10900, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🌈", tagline: "65型miniLED在庫限り",
+    catchcopy: "65型量子ドット×miniLEDが10.9万円！在庫限りの破格",
+    forWho: ["量子ドット×miniLEDを安く65型で手に入れたい方"],
+    notForWho: ["倍速・国内メーカーを求める方"],
+    strongPoints: [
+      { icon: "🌈", title: "量子ドット×miniLED", body: "この価格帯で量子ドット×miniLEDは異例のコスパ" },
+      { icon: "💰", title: "在庫一掃価格", body: "なくなり次第終了。今が最後のチャンス" },
+      { icon: "📱", title: "ネット動画対応", body: "主要配信サービスに対応" }
+    ],
+    staffComment: "65型で量子ドット×miniLEDがこの価格は在庫一掃ならでは。倍速非対応だが画質のコスパは抜群。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "hulu", "ABEMA", "TVer"],
+    note: "在庫限り"
+  },
+  {
+    id: 406, size: 65, brand: "Hisense", model: "65U8R",
+    price: 144000, point: 14400, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED 上位", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🌈", tagline: "65型miniLED上位在庫限り",
+    catchcopy: "65型U8R miniLED×倍速が在庫限り特価！",
+    forWho: ["倍速対応の量子ドット×miniLEDを65型で手に入れたい方"],
+    notForWho: ["国内メーカーにこだわる方"],
+    strongPoints: [
+      { icon: "🌈", title: "量子ドット×MiniLED×倍速", body: "U7Rに倍速が加わった上位モデル。スポーツ映像も快適" },
+      { icon: "💰", title: "在庫一掃特価", body: "144,000円は在庫処分価格。通常より大幅安" },
+      { icon: "🔊", title: "5スピーカー搭載", body: "充実したスピーカー構成で迫力ある音響" }
+    ],
+    staffComment: "65型量子ドット×MiniLED×倍速の上位モデルが在庫一掃価格。5スピーカー搭載で音質も良好。在庫限りのため早めのご決断を。",
+    specs: { tuner: "地上/BS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（5基）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "在庫限り"
+  },
+  {
+    id: 407, size: 65, brand: "Hisense", model: "65U7S",
+    price: 231000, point: 23100, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🌈", tagline: "65型量子ドット価格相談",
+    catchcopy: "65型量子ドット×MiniLED×倍速×2画面！価格はご相談",
+    forWho: ["65型の量子ドット×MiniLEDを求める方", "倍速＋2画面も必要な方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "🌈", title: "量子ドット×MiniLED", body: "65型で高コントラストと広色域の映像体験" },
+      { icon: "⚡", title: "倍速＋2画面", body: "残像なし映像＋2番組同時視聴" },
+      { icon: "💰", title: "価格ご相談", body: "交渉余地あり。スタッフへお気軽に" }
+    ],
+    staffComment: "65型量子ドット×MiniLED×倍速×2画面対応の上位機。価格「ご相談ください」表記あり交渉余地があります。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "価格ご相談"
+  },
+  {
+    id: 408, size: 65, brand: "Hisense", model: "65U8S",
+    price: 275000, point: 2750, ecoStar: 3.0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED 上位", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 3810,
+    icon: "✨", tagline: "65型ハイセンス最上位派",
+    catchcopy: "ハイセンス65型フラッグシップ！U8S上位MiniLED×倍速",
+    forWho: ["ハイセンスの65型最高画質を求める方"],
+    notForWho: ["2画面表示が必要な方"],
+    strongPoints: [
+      { icon: "✨", title: "U8S上位MiniLEDパネル", body: "U7Sより上位の精密MiniLED制御。黒の締まりと明るさを高次元で両立" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツ・映画で残像なしのなめらか映像" },
+      { icon: "🌿", title: "省エネ評価3.0", body: "年間電気代3,810円。ハイセンス上位機の中では省エネ" }
+    ],
+    staffComment: "ハイセンス65型の現行フラッグシップ。省エネ評価3.0・年間電気代3,810円。ポイント1%に注意。上位のMiniLEDパネルで映像美が際立ちます。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 3.0, annualCost: "3,810円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "ポイント1%"
+  },
+  {
+    id: 409, size: 65, brand: "TCL", model: "65C7K",
+    price: 126800, point: 0, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💎", tagline: "TCL 65型展示品コスパ",
+    catchcopy: "65型量子ドット×miniLED×Google TVが展示品特価！",
+    forWho: ["65型miniLEDをコスパよく手に入れたい方", "Google TVで配信も楽しみたい方"],
+    notForWho: ["外箱完品にこだわる方"],
+    strongPoints: [
+      { icon: "💎", title: "量子ドット×miniLED×Google TV", body: "この3つが揃った65型が展示品価格で手頃に" },
+      { icon: "📱", title: "Google TV搭載", body: "Netflix・YouTube等を1画面でまとめて管理" },
+      { icon: "🏪", title: "展示品特価", body: "外箱なし・状態確認後購入可能" }
+    ],
+    staffComment: "65型量子ドット×miniLED×Google TVが展示品126,800円。TCLは世界テレビブランド2位の実力派。外箱なし・納期2週間。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: "展示品・外箱なし"
+  },
+  {
+    id: 410, size: 65, brand: "TCL", model: "65C8K",
+    price: 179800, point: 0, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED 上位", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💎", tagline: "TCL 65型上位展示品",
+    catchcopy: "65型量子ドット×miniLED×倍速×Google TVのTCL上位機展示品",
+    forWho: ["倍速対応の高画質miniLEDを65型で手頃に手に入れたい方"],
+    notForWho: ["外箱完品にこだわる方"],
+    strongPoints: [
+      { icon: "💎", title: "C8K上位miniLED×倍速", body: "C7Kより上位のパネルに倍速表示が加わった全部入りモデル" },
+      { icon: "📱", title: "Google TV搭載", body: "配信サービスをまとめて管理" },
+      { icon: "🏪", title: "展示品特価", body: "外箱なし・状態確認後購入可能" }
+    ],
+    staffComment: "TCLの65型上位機C8Kが展示品179,800円。倍速対応で動きの激しい映像もなめらか。外箱なし・納期2週間。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "展示品・外箱なし"
+  },
+  {
+    id: 411, size: 65, brand: "TVS REGZA", model: "65X9900R",
+    price: 462000, point: 46200, ecoStar: 2.1,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 5180,
+    icon: "⭐", tagline: "REGZA 65型有機EL最上位",
+    catchcopy: "REGZA 65型有機ELフラッグシップ！タイムシフト×倍速×2画面の最高峰",
+    forWho: ["REGZAの65型有機EL最高峰を求める方", "タイムシフト録画を使いたい方", "スポーツ×映画×録画を全て最高水準で楽しみたい方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "⚫", title: "65型有機EL×REGZA最上位", body: "完全な黒と無限コントラストをREGZAの最高機能と組み合わせた究極の一台" },
+      { icon: "📼", title: "タイムシフト録画搭載", body: "過去最大9チューナーで放送中全番組を自動録画。見逃し0" },
+      { icon: "⚡", title: "倍速＋2画面", body: "残像なし映像＋2番組同時視聴。サウンドバーセット特別価格あり" }
+    ],
+    staffComment: "65型REGZAの有機ELフラッグシップ。省エネ評価2.1・年間5,180円。サウンドバー（TS3100Q）とのセット特別価格あり。スタッフへご相談ください。",
+    specs: { tuner: "地上/BS/CS ×9", hdmi: 4, hdmiArc: 1, usb: 3, speaker: "—", frameRate: "120Hz", ecoStar: 2.1, annualCost: "5,180円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: true, simultaneous: true, detail: "外付けHDD・タイムシフト・おまかせ録画・裏番組録画" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT", "DAZN"],
+    note: "サウンドバーセット特別価格あり"
+  },
+  {
+    id: 412, size: 65, brand: "SHARP", model: "4T-C65HQ1",
+    price: 225800, point: 2258, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🔄", tagline: "65型有機EL回転スタンド展示品",
+    catchcopy: "65型有機EL×回転スタンド展示品特価！どこからでも正面で見られる",
+    forWho: ["65型有機ELを展示品価格でお得に手に入れたい方", "回転スタンドで角度を自由に変えたい方"],
+    notForWho: ["外箱完品にこだわる方（ポイント1%）"],
+    strongPoints: [
+      { icon: "🔄", title: "65型有機EL×回転スタンド", body: "有機ELの美しさをどこからでも正面で楽しめる独自設計" },
+      { icon: "⚡", title: "倍速＋Google TV", body: "なめらか映像＋配信もスムーズ" },
+      { icon: "🏪", title: "展示品特価", body: "外箱なし・ポイント1%。状態確認後購入可能" }
+    ],
+    staffComment: "65型有機EL×回転スタンド搭載のAQUOS展示品。ポイント1%・外箱なし。納期2〜3週間。購入前に必ず状態確認を。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "展示品・外箱なし・ポイント1%"
+  },
+  {
+    id: 413, size: 65, brand: "SHARP", model: "4T-C65HS1",
+    price: 302800, point: 0, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🌟", tagline: "65型AQUOS有機EL展示品",
+    catchcopy: "AQUOS 65型有機EL展示品特価！Google TV×倍速の上位モデル",
+    forWho: ["AQUOS 65型有機ELを展示品価格で手に入れたい方"],
+    notForWho: ["外箱完品にこだわる方"],
+    strongPoints: [
+      { icon: "⚫", title: "65型有機EL×Google TV", body: "完全な黒と無限コントラストにGoogle TVの使いやすさが融合" },
+      { icon: "⚡", title: "倍速表示対応", body: "有機ELの速い応答速度と倍速でスポーツも完璧" },
+      { icon: "🏪", title: "展示品特価", body: "外箱なし・状態確認後購入可能。納期2週間" }
+    ],
+    staffComment: "AQUOS 65型有機ELの展示品。Google TV搭載で配信も使いやすい。外箱なし・状態確認必須。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "展示品・外箱なし"
+  },
+  {
+    id: 414, size: 65, brand: "SHARP", model: "4T-65S9A",
+    price: 660000, point: 66000, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）上位", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "👑", tagline: "AQUOS 65型最上位新発売",
+    catchcopy: "2025年5月23日新発売！AQUOS有機EL65型最高峰フラッグシップ",
+    forWho: ["AQUOS 65型の最新・最高スペックを求める方", "発売直後の最新モデルを手に入れたい方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "👑", title: "2025年最新AQUOS有機EL最上位", body: "発売直後の最新フラッグシップ。AQUOSの技術の粋を65型に" },
+      { icon: "📱", title: "Google TV搭載", body: "最新スマートTV OSで配信をスムーズに" },
+      { icon: "💰", title: "AQUOS CB対象", body: "25周年キャッシュバック対象（確認要）" }
+    ],
+    staffComment: "2026年5月23日発売の最新AQUOS有機EL65型最上位。発売直後で価格は高めだが今後の値下がりも見込める。AQUOSキャッシュバック対象商品。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "新発売・CB対象"
+  },
+  {
+    id: 415, size: 65, brand: "SONY", model: "K-65XR90",
+    price: 367800, point: 3678, ecoStar: 1.9,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED XR", speaker: 0,
+    googleTV: true, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 5620,
+    icon: "🎬", tagline: "BRAVIA 65型miniLED展示品",
+    catchcopy: "BRAVIAエンジンXR×65型miniLED展示品特価！",
+    forWho: ["SONYのminiLED×BRAVIAエンジンを65型で体験したい方", "Google TV×AirPlay 2対応が欲しい方"],
+    notForWho: ["倍速表示が必要な方（非対応）", "外箱完品にこだわる方"],
+    strongPoints: [
+      { icon: "🎬", title: "BRAVIAエンジンXR×miniLED", body: "SONYの独自映像処理とminiLEDの精密な輝度制御が融合した65型" },
+      { icon: "📱", title: "Google TV×AirPlay 2", body: "配信もiPhone連携もスムーズ" },
+      { icon: "🏪", title: "展示品特価", body: "外箱なし・ポイント1%。状態確認後購入可能" }
+    ],
+    staffComment: "BRAVIAエンジンXR搭載の65型miniLED展示品。省エネ評価1.9・年間5,620円。倍速非対応。外箱なし・ポイント1%・納期2〜3週間。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "60Hz", ecoStar: 1.9, annualCost: "5,620円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "展示品・外箱なし・ポイント1%"
+  },
+  {
+    id: 416, size: 65, brand: "SONY", model: "XRJ-65A95L",
+    price: 552800, point: 0, ecoStar: 2.1,
+    type: "有機EL（OLED）", panel: "QD-OLED（量子ドット有機EL）", speaker: 0,
+    googleTV: true, netVideo: true, airplay: true, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 5160,
+    icon: "🌟", tagline: "SONY QD-OLED 65型展示品",
+    catchcopy: "SONYの最高峰QD-OLED 65型展示品特価！量子ドット×有機EL",
+    forWho: ["SONYのQD-OLED最高画質を65型で体験したい方", "映画・ドラマを究極の映像美で楽しみたい方"],
+    notForWho: ["外箱完品にこだわる方"],
+    strongPoints: [
+      { icon: "🌟", title: "QD-OLED最高峰パネル", body: "量子ドット×有機ELの融合。有機ELの完全な黒＋量子ドットの広色域を両立" },
+      { icon: "🎬", title: "BRAVIAエンジンXR", body: "映画業界向け映像処理技術を家庭用に応用した映像の質感が段違い" },
+      { icon: "📱", title: "Google TV×AirPlay 2×倍速", body: "全機能を高水準で搭載した真のフラッグシップ" }
+    ],
+    staffComment: "SONYの65型最高峰QD-OLED。有機ELの完全な黒と量子ドットの広色域が融合。省エネ2.1・年間5,160円。外箱なし展示品。状態確認必須。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 2, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 2.1, annualCost: "5,160円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "展示品・外箱なし"
+  },
+  {
+    id: 417, size: 75, brand: "Hisense", model: "75A6R",
+    price: 99800, point: 998, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💰", tagline: "75型最安派",
+    catchcopy: "75型4Kが約10万円！在庫限りの破格コスパ",
+    forWho: ["とにかく安く75型を導入したい方", "ネット動画メインの方"],
+    notForWho: ["国内メーカーにこだわる方", "倍速・量子ドットを求める方"],
+    strongPoints: [
+      { icon: "💰", title: "75型4K最安値クラス", body: "10万円以下で75型4Kが手に入る異例の価格" },
+      { icon: "📱", title: "ネット動画対応", body: "主要配信サービスに対応" },
+      { icon: "⚡", title: "在庫限り特価", body: "なくなり次第終了" }
+    ],
+    staffComment: "75型でこの価格は国内では唯一無二。倍速・量子ドットはないが、大画面を手頃に導入したい方には最適。在庫限り。",
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: false, detail: "外付けHDD録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "hulu", "ABEMA", "TVer"],
+    note: "在庫限り"
+  },
+  {
+    id: 418, size: 75, brand: "Hisense", model: "75U0R",
+    price: 194000, point: 19400, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🌈", tagline: "75型miniLED在庫限り",
+    catchcopy: "75型量子ドット×miniLED×倍速が在庫限り特価！",
+    forWho: ["75型の量子ドット×miniLEDを手頃に手に入れたい方"],
+    notForWho: ["国内メーカーにこだわる方"],
+    strongPoints: [
+      { icon: "🌈", title: "75型量子ドット×miniLED×倍速", body: "大画面75型に量子ドット×miniLED×倍速が揃った充実スペック" },
+      { icon: "💰", title: "在庫一掃特価", body: "194,000円は75型この仕様では破格の安さ" },
+      { icon: "📺", title: "75型の迫力", body: "視聴推奨距離約1.4m。10畳以上のリビングに最適" }
+    ],
+    staffComment: "75型量子ドット×miniLED×倍速が194,000円は在庫処分価格。10畳以上のリビングに最適な大画面。在庫限りのため早めのご決断を。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "在庫限り"
+  },
+  {
+    id: 419, size: 75, brand: "Hisense", model: "75U7S",
+    price: 264000, point: 26400, ecoStar: 0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🌈", tagline: "75型量子ドット価格相談",
+    catchcopy: "75型量子ドット×miniLED×倍速×2画面！価格はご相談",
+    forWho: ["75型の高画質×倍速×2画面を求める方"],
+    notForWho: ["予算を抑えたい方"],
+    strongPoints: [
+      { icon: "🌈", title: "75型量子ドット×miniLED×倍速×2画面", body: "大画面75型に全機能が揃った充実モデル" },
+      { icon: "💰", title: "価格ご相談", body: "交渉余地あり" },
+      { icon: "📺", title: "75型の圧倒的迫力", body: "10畳以上のリビングで真価を発揮" }
+    ],
+    staffComment: "75型量子ドット×miniLED×倍速×2画面。価格「ご相談ください」表記あり交渉余地あり。HDMI4端子搭載。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "価格ご相談"
+  },
+  {
+    id: 420, size: 116, brand: "Hisense", model: "116U9R",
+    price: 3520000, point: 35200, ecoStar: 3.0,
+    type: "量子ドット miniLED", panel: "量子ドット / MiniLED 最上位", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 8510,
+    icon: "👑", tagline: "116型フラッグシップ",
+    catchcopy: "116型4K量子ドット×miniLED！ハイセンス最大・最高峰フラッグシップ",
+    forWho: ["最大サイズの圧倒的大画面を求める方", "業務用・ホームシアター用途の方", "とにかく最大・最高を求める方"],
+    notForWho: ["一般的なリビングへの設置（設置スペース要確認）", "予算を抑えたい方"],
+    strongPoints: [
+      { icon: "👑", title: "116型圧倒的大画面", body: "視聴推奨距離約2.2m。ホームシアター級の没入感を自宅で" },
+      { icon: "🔊", title: "10スピーカー 110W", body: "10スピーカー合計110Wの圧倒的音響。サウンドバー不要" },
+      { icon: "🌈", title: "量子ドット×miniLED×倍速", body: "最大サイズでも妥協しない最高画質" }
+    ],
+    staffComment: "116型は店内最大サイズ。10スピーカー110W搭載で音響も圧巻。省エネ評価3.0・年間電気代8,510円。ポイント1%。設置前にスペース確認必須。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "110W（10スピーカー）", frameRate: "120Hz", ecoStar: 3.0, annualCost: "8,510円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・同時録画2番組対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT", "DAZN"],
+    note: "ポイント1%"
+  },
+  /* ── Panasonic 新機種 ── */
+  {
+    id: 501, size: 42, brand: "Panasonic", model: "TV-42Z90B",
+    price: 237600, point: 0, ecoStar: 1.9,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 60,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 3510,
+    icon: "🌟", tagline: "パナ有機EL入門派",
+    catchcopy: "パナソニック42型有機EL！倍速×2画面で映画もスポーツも美しく",
+    forWho: ["有機ELを手頃に試したい方", "倍速＋2画面が欲しい方", "パナソニックブランドを求める方"],
+    notForWho: ["ポイント還元を期待する方（ポイント対象外）"],
+    strongPoints: [
+      { icon: "⚫", title: "有機ELの完全な黒", body: "バックライト不要の自発光。ピクセル単位で点灯・消灯し完全な黒を実現" },
+      { icon: "⚡", title: "倍速＋2画面", body: "残像なしの滑らか映像に2番組同時視聴が加わる" },
+      { icon: "🔊", title: "3スピーカー60W", body: "Dolby Atmos対応の大出力スピーカーで臨場感抜群" }
+    ],
+    staffComment: "パナソニック42型有機EL。倍速表示＋2画面表示搭載。省エネ評価1.9・年間3,510円。ポイント付与対象外・PREMIUM対象モデル。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "60W（3スピーカー）", frameRate: "120Hz", ecoStar: 1.9, annualCost: "3,510円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "ポイント対象外・PREMIUM"
+  },
+  {
+    id: 502, size: 48, brand: "Panasonic", model: "TV-48Z90B",
+    price: 247500, point: 0, ecoStar: 1.9,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 60,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 4130,
+    icon: "🌟", tagline: "パナ48型有機EL派",
+    catchcopy: "48型有機EL×倍速×2画面！パナソニックOLEDの存在感",
+    forWho: ["有機ELを48型で楽しみたい方", "倍速＋2画面が欲しい方", "パナソニックブランドを求める方"],
+    notForWho: ["ポイント還元を期待する方（ポイント対象外）"],
+    strongPoints: [
+      { icon: "⚫", title: "有機ELの完全な黒", body: "自発光パネルならではの漆黒と圧倒的コントラスト" },
+      { icon: "⚡", title: "倍速＋2画面", body: "スポーツも2番組同時視聴もOK" },
+      { icon: "🔊", title: "3スピーカー60W", body: "Dolby Atmos対応。映画の音響に迫力が増す" }
+    ],
+    staffComment: "パナソニック48型有機EL。倍速＋2画面搭載。省エネ評価1.9・年間4,130円。ポイント付与対象外・PREMIUM対象。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "60W（3スピーカー）", frameRate: "120Hz", ecoStar: 1.9, annualCost: "4,130円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "ポイント対象外・PREMIUM"
+  },
+  {
+    id: 503, size: 50, brand: "Panasonic", model: "TV-50W80B",
+    price: 114800, point: 11480, ecoStar: 2.2,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 20,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 3890,
+    icon: "👨‍👩‍👧", tagline: "50型ファミリー安心派",
+    catchcopy: "50型2画面対応が11.5万円！パナソニックの安心スタンダード",
+    forWho: ["スポーツ観戦しながら別番組も見たい方", "コスパよく50型パナを選びたい方", "子どものいる家庭"],
+    notForWho: ["倍速・量子ドット等の高画質を求める方"],
+    strongPoints: [
+      { icon: "📺", title: "2画面表示対応", body: "画面を2分割して2番組同時視聴。スポーツ観戦に便利" },
+      { icon: "💰", title: "10%ポイント還元", body: "11,480円分ポイント還元。実質103,320円相当" },
+      { icon: "🏠", title: "HDMI3端子", body: "ゲーム機・レコーダーを接続できる余裕の端子数" }
+    ],
+    staffComment: "パナソニック50型液晶のスタンダード機。2画面表示対応で10%ポイント還元あり。省エネ評価2.2・年間3,890円。倍速非対応のため動きの激しい映像は注意。",
+    specs: { tuner: "地上/BS ×2", hdmi: 3, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 2.2, annualCost: "3,890円", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応（1番組）" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: ""
+  },
+  {
+    id: 504, size: 50, brand: "Panasonic", model: "TV-50M60B",
+    price: 114800, point: 11480, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 20,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💰", tagline: "50型パナ最安派",
+    catchcopy: "50型パナソニックが11.5万円！シンプルスタンダードモデル",
+    forWho: ["コスパよくパナソニック50型を選びたい方", "地デジ・ネット動画をシンプルに楽しみたい方"],
+    notForWho: ["倍速・2画面等の機能を求める方"],
+    strongPoints: [
+      { icon: "💰", title: "パナ50型最安クラス", body: "W80Bと同価格帯でよりシンプルな構成" },
+      { icon: "📺", title: "ネット動画対応", body: "主要配信サービスに対応" },
+      { icon: "🔌", title: "HDMI4端子", body: "複数機器をフル接続可能" }
+    ],
+    staffComment: "パナソニック50型液晶のエントリーモデル。2画面非対応のシンプル設計。ネット動画対応。10%ポイント還元あり。",
+    specs: { tuner: "地上/BS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
+    note: ""
+  },
+  {
+    id: 505, size: 55, brand: "Panasonic", model: "TV-55W95B",
+    price: 168300, point: 0, ecoStar: 0,
+    type: "miniLED液晶", panel: "miniLED / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💡", tagline: "パナminiLED 55型派",
+    catchcopy: "パナ55型miniLED×倍速×2画面！VIERAの最新映像技術",
+    forWho: ["miniLEDの高コントラストを55型で体験したい方", "倍速＋2画面が欲しい方", "パナソニックブランドを求める方"],
+    notForWho: ["ポイント還元を期待する方（ポイント対象外）"],
+    strongPoints: [
+      { icon: "💡", title: "miniLED×倍速", body: "精密な輝度制御のminiLEDに倍速が加わり映像が一段上に" },
+      { icon: "📺", title: "2画面表示対応", body: "2番組同時視聴＋スポーツ観戦に最適" },
+      { icon: "🔌", title: "HDMI4端子", body: "ゲーム機・レコーダー等を全部接続可能" }
+    ],
+    staffComment: "パナソニック55型miniLED液晶。倍速表示＋2画面表示搭載のPREMIUMモデル。ポイント付与対象外。チューナー×3搭載。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（3スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "ポイント対象外・PREMIUM"
+  },
+  {
+    id: 506, size: 55, brand: "Panasonic", model: "TV-55W90B",
+    price: 144220, point: 14422, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "⚡", tagline: "パナ55型倍速在庫限り",
+    catchcopy: "倍速×2画面の55型パナが在庫限り144,220円！10%ポイント還元も",
+    forWho: ["倍速＋2画面の55型パナを手頃に狙いたい方", "ポイント還元も欲しい方"],
+    notForWho: ["在庫なくなり次第終了のため急ぎでない方には不向き"],
+    strongPoints: [
+      { icon: "⚡", title: "倍速＋2画面", body: "スポーツも別番組も滑らかに楽しめる" },
+      { icon: "💰", title: "在庫一掃価格＋10%ポイント", body: "144,220円で10%還元（14,422円分）。実質129,798円相当" },
+      { icon: "📺", title: "55型の迫力", body: "パナソニックの55型液晶でコンテンツを迫力満点に" }
+    ],
+    staffComment: "パナソニック55型液晶旧モデル。在庫限りで値下げ済み。倍速＋2画面搭載。10%ポイント還元あり。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（2スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "在庫限り"
+  },
+  {
+    id: 507, size: 55, brand: "Panasonic", model: "TV-55Z90B",
+    price: 257400, point: 0, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🌟", tagline: "パナ55型有機EL派",
+    catchcopy: "パナ55型有機EL×倍速×2画面！VIERAの最高映像体験",
+    forWho: ["有機ELの完全な黒を55型で体験したい方", "倍速＋2画面が欲しい方", "パナソニックブランドを求める方"],
+    notForWho: ["ポイント還元を期待する方（ポイント対象外）"],
+    strongPoints: [
+      { icon: "⚫", title: "有機ELの完全な黒", body: "自発光パネルで漆黒と無限コントラストを実現" },
+      { icon: "⚡", title: "倍速＋2画面", body: "残像なし映像＋2番組同時視聴のダブル搭載" },
+      { icon: "🔊", title: "3スピーカー", body: "Dolby Atmos対応の迫力サウンド" }
+    ],
+    staffComment: "パナソニック55型有機EL。倍速＋2画面搭載。ポイント付与対象外・PREMIUM対象モデル。HDMI4端子搭載。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（3スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "ポイント対象外・PREMIUM"
+  },
+  {
+    id: 508, size: 55, brand: "Panasonic", model: "TV-55Z95B",
+    price: 336600, point: 0, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）上位", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "👑", tagline: "パナ55型有機EL最上位",
+    catchcopy: "パナ55型有機EL最上位！Z90Bより上位パネル×6スピーカー",
+    forWho: ["パナソニック55型有機ELの最高峰を求める方", "音響にもこだわりたい方"],
+    notForWho: ["ポイント還元を期待する方（ポイント対象外）", "予算を抑えたい方"],
+    strongPoints: [
+      { icon: "👑", title: "Z90Bより上位の有機ELパネル", body: "より高輝度・高精細な上位グレード有機ELを搭載" },
+      { icon: "🔊", title: "6スピーカー搭載", body: "Z90Bの3スピーカーから倍増。音響の広がりが段違い" },
+      { icon: "⚡", title: "倍速＋2画面", body: "全機能を最上位水準で搭載" }
+    ],
+    staffComment: "パナソニック55型有機EL最上位。Z90Bより上位パネル搭載・スピーカー6基。ポイント付与対象外・PREMIUM対象。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（6スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "ポイント対象外・PREMIUM"
+  },
+  {
+    id: 509, size: 65, brand: "Panasonic", model: "TV-65W90B",
+    price: 161590, point: 16159, ecoStar: 0,
+    type: "4K液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "⚡", tagline: "パナ65型倍速在庫限り",
+    catchcopy: "65型倍速×2画面のパナが在庫限り16万円！10%ポイント還元も",
+    forWho: ["倍速＋2画面の65型を手頃に狙いたい方", "パナソニックブランドを求める方"],
+    notForWho: ["在庫なくなり次第終了のため急ぎでない方には不向き"],
+    strongPoints: [
+      { icon: "⚡", title: "倍速＋2画面", body: "65型の大画面でスポーツも別番組も滑らかに楽しめる" },
+      { icon: "💰", title: "在庫一掃価格＋10%ポイント", body: "161,590円で10%還元（16,159円分）。実質145,431円相当" },
+      { icon: "📺", title: "65型の圧倒的迫力", body: "10畳以上のリビングに最適な大画面" }
+    ],
+    staffComment: "パナソニック65型液晶旧モデル。在庫限り値下げ済み。倍速＋2画面搭載。10%ポイント還元あり。HDMI4端子搭載。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（2スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "在庫限り"
+  },
+  {
+    id: 510, size: 65, brand: "Panasonic", model: "TV-65W95B",
+    price: 207900, point: 0, ecoStar: 2.3,
+    type: "miniLED液晶", panel: "miniLED / 直下型LED", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "💡", tagline: "パナminiLED 65型派",
+    catchcopy: "パナ65型miniLED×倍速×2画面！大画面でも妥協なし",
+    forWho: ["miniLEDの高コントラストを65型で体験したい方", "倍速＋2画面が欲しい方", "パナソニックブランドを求める方"],
+    notForWho: ["ポイント還元を期待する方（ポイント対象外）"],
+    strongPoints: [
+      { icon: "💡", title: "65型miniLED×倍速", body: "大画面に精密なminiLED輝度制御と倍速が融合" },
+      { icon: "📺", title: "2画面表示対応", body: "65型の迫力画面で2番組同時視聴" },
+      { icon: "🌿", title: "省エネ評価2.3", body: "miniLED搭載モデルとしては良好な省エネ性能" }
+    ],
+    staffComment: "パナソニック65型miniLED液晶。倍速＋2画面搭載のPREMIUMモデル。省エネ評価2.3。ポイント付与対象外。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（3スピーカー）", frameRate: "120Hz", ecoStar: 2.3, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "ポイント対象外・PREMIUM"
+  },
+  {
+    id: 511, size: 65, brand: "Panasonic", model: "TV-65Z90B",
+    price: 376200, point: 0, ecoStar: 0,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    resolution: "4K", annualCost: 0,
+    icon: "🌟", tagline: "パナ65型有機EL派",
+    catchcopy: "パナ65型有機EL×倍速！首振り機能搭載のVIERA上位機",
+    forWho: ["有機ELを65型で楽しみたい方", "パナソニックブランドを求める方", "首振り機能で角度を変えたい方"],
+    notForWho: ["ポイント還元を期待する方（ポイント対象外）", "予算を抑えたい方"],
+    strongPoints: [
+      { icon: "⚫", title: "65型有機ELの迫力", body: "自発光パネルで完全な黒と無限コントラスト。65型の大画面で真価発揮" },
+      { icon: "🔄", title: "首振り機能搭載", body: "スタンドが回転し、どの角度からでも正面で視聴可能" },
+      { icon: "⚡", title: "倍速表示対応", body: "スポーツ・アニメで残像なしのなめらか映像" }
+    ],
+    staffComment: "パナソニック65型有機EL。倍速対応＋首振り機能（回転スタンド）搭載。3スピーカー搭載。ポイント付与対象外・PREMIUM対象。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（3スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "ポイント対象外・PREMIUM"
+  },
+  {
+    id: 512, size: 65, brand: "Panasonic", model: "TV-65Z95B",
+    price: 475200, point: 0, ecoStar: 1.9,
+    type: "有機EL（OLED）", panel: "有機EL（OLED）上位", speaker: 0,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
+    resolution: "4K", annualCost: 5670,
+    icon: "👑", tagline: "パナ65型有機EL最上位",
+    catchcopy: "パナ65型有機EL最上位Z95B！6スピーカー×倍速×2画面のフラッグシップ",
+    forWho: ["パナソニック65型有機ELの最高峰を求める方", "音響にもこだわりたい方", "2画面表示も必要な方"],
+    notForWho: ["ポイント還元を期待する方（ポイント対象外）", "予算を抑えたい方"],
+    strongPoints: [
+      { icon: "👑", title: "パナ65型有機EL最上位", body: "Z90Bより上位パネルを搭載した65型フラッグシップ" },
+      { icon: "🔊", title: "6スピーカー搭載", body: "迫力の大出力サウンドシステムで映画・音楽が段違い" },
+      { icon: "⚡", title: "倍速＋2画面", body: "残像なし＋2番組同時視聴がフラッグシップ水準で実現" }
+    ],
+    staffComment: "パナソニック65型有機EL最上位Z95B。省エネ評価1.9・年間5,670円。6スピーカー搭載で音響も最上位水準。ポイント付与対象外・PREMIUM。",
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（6スピーカー）", frameRate: "120Hz", ecoStar: 1.9, annualCost: "5,670円", wifi: true, bluetooth: true },
+    recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
+    streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
+    note: "ポイント対象外・PREMIUM"
   }
 ];
 
 function fmt(n) { return n.toLocaleString(); }
 
 const BRANDS_LIST   = ["Panasonic", "SONY", "SHARP", "TVS REGZA", "TCL", "Hisense", "LG"];
-const SIZES         = ["すべて", "32型", "43型", "50型以上"];
+const SIZES = ["すべて", "32型", "43型", "50型", "55型", "65型", "75型以上"];
 const FEATURE_OPTS  = [
   { key: "googleTV",    label: "Google TV" },
   { key: "airplay",     label: "AirPlay 2" },
@@ -1241,9 +1909,11 @@ function TVGuide() {
 
   var filtered = allTvData.filter(function(tv) {
     if (sizeFilter === "32型" && tv.size !== 32) return false;
-    if (sizeFilter === "43型" && tv.size < 40 && tv.size !== 43) return false;
-    if (sizeFilter === "43型" && tv.size >= 45) return false;
-    if (sizeFilter === "50型以上" && tv.size < 45) return false;
+    if (sizeFilter === "43型" && (tv.size < 40 || tv.size >= 45)) return false;
+    if (sizeFilter === "50型" && (tv.size < 45 || tv.size >= 53)) return false;
+    if (sizeFilter === "55型" && (tv.size < 53 || tv.size >= 60)) return false;
+    if (sizeFilter === "65型" && (tv.size < 60 || tv.size >= 70)) return false;
+    if (sizeFilter === "75型以上" && tv.size < 70) return false;
     if (brandFilters.size > 0 && !brandFilters.has(tv.brand)) return false;
     if (featureFilters.size > 0) {
       var checks = {
@@ -1859,7 +2529,6 @@ function TVGuide() {
     </div>
   );
 }
-
 
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(React.createElement(TVGuide));
