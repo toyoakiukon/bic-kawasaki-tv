@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>テレビ選び方ガイド｜ビックカメラ川崎店</title>
+  <title>テレビ選び方ガイド｜ビックカメラ川崎店（修正版）</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
@@ -29,7 +29,7 @@ const allTvData = [
   {
     id: 101, size: 32, brand: "Panasonic", model: "TH-32J300",
     price: 47080, point: 4708, ecoStar: 4.0,
-    type: "4K液晶", panel: "VA / 直下型LED", speaker: 10,
+    type: "HD液晶", panel: "VA / 直下型LED", speaker: 10,
     googleTV: false, netVideo: false, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
     resolution: "HD", annualCost: 1110,
     icon: "📺", tagline: "操作シンプル派",
@@ -50,7 +50,7 @@ const allTvData = [
   {
     id: 102, size: 32, brand: "SONY", model: "K-32W840",
     price: 60500, point: 6050, ecoStar: 3.2,
-    type: "4K液晶", panel: "VA / 直下型LED", speaker: 10,
+    type: "フルHD液晶", panel: "VA / 直下型LED", speaker: 10,
     googleTV: false, netVideo: false, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
     resolution: "FHD", annualCost: 1920,
     icon: "🏆", tagline: "画質最優先派",
@@ -58,7 +58,7 @@ const allTvData = [
     forWho: ["映像の綺麗さを最重視する方", "映画・スポーツをよく見る方", "将来も長く使いたい方"],
     notForWho: ["Netflix等の配信メインの方", "コスパ重視の方"],
     strongPoints: [
-      { icon: "🖼️", title: "32型唯一のフルHD", body: "他社がHD（1366×768）の中、圧倒的な1920×1080の高解像度" },
+      { icon: "🖼️", title: "32型では貴重なフルHD", body: "他社がHD（1366×768）の中、圧倒的な1920×1080の高解像度" },
       { icon: "✨", title: "BRAVIA映像エンジン", body: "「クリアレゾリューション」技術で細部まで鮮明・ノイズも少ない" },
       { icon: "🎵", title: "声が聞きやすい", body: "クリアボイス機能でニュースやドラマのセリフがくっきり" }
     ],
@@ -71,7 +71,7 @@ const allTvData = [
   {
     id: 103, size: 32, brand: "SHARP", model: "2T-C32GE1",
     price: 52800, point: 5280, ecoStar: 4.5,
-    type: "4K液晶", panel: "直下型LED / 低反射", speaker: 10,
+    type: "HD液晶", panel: "直下型LED / 低反射", speaker: 10,
     googleTV: false, netVideo: false, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
     resolution: "HD", annualCost: 1100,
     icon: "🌿", tagline: "省エネ最強派",
@@ -92,7 +92,7 @@ const allTvData = [
   {
     id: 104, size: 32, brand: "SHARP", model: "2T-C32GF1",
     price: 46940, point: 4694, ecoStar: 4.4,
-    type: "4K液晶", panel: "直下型LED / 低反射", speaker: 10,
+    type: "HD液晶（Google TV）", panel: "直下型LED / 低反射", speaker: 10,
     googleTV: true, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
     resolution: "HD", annualCost: 1160,
     icon: "⚖️", tagline: "バランス最強派",
@@ -113,7 +113,7 @@ const allTvData = [
   {
     id: 105, size: 32, brand: "TVS REGZA", model: "32V35S",
     price: 55000, point: 5500, ecoStar: 3.6,
-    type: "4K液晶", panel: "全面直下型LED", speaker: 14,
+    type: "フルHD液晶", panel: "全面直下型LED", speaker: 14,
     googleTV: false, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
     resolution: "FHD", annualCost: 1570,
     icon: "🚀", tagline: "最新機能全部入り",
@@ -121,11 +121,11 @@ const allTvData = [
     forWho: ["FHD画質で配信も見たい方", "AirPlay・スマホ連携したい方", "最新機能を使いたい方"],
     notForWho: ["とにかく安く買いたい方", "省エネを重視する方"],
     strongPoints: [
-      { icon: "🖼️", title: "FHD＋ネット動画", body: "フルHDで配信対応は7機種中この1台のみ" },
+      { icon: "🖼️", title: "FHD＋ネット動画", body: "フルHDで配信にも対応" },
       { icon: "🔊", title: "14Wスピーカー", body: "国内メーカー配信対応機の中で最大出力。音の迫力が違う" },
       { icon: "📱", title: "AirPlay 2対応", body: "iPhoneの画面をそのままテレビに映せる" }
     ],
-    staffComment: "32型でフルHD＋ネット動画対応の唯一機。AirPlay 2でiPhoneとも連携可。14Wスピーカーは配信対応の32型では最大出力。2025年最新モデル。",
+    staffComment: "32型でフルHD＋ネット動画対応の高機能モデル。AirPlay 2でiPhoneとも連携可。14Wスピーカーは配信対応の32型では最大出力。2025年最新モデル。",
     specs: { tuner: "地上/BS/CS ×2", hdmi: 2, hdmiArc: 1, usb: 2, speaker: "14W（2ch）", frameRate: "60Hz", ecoStar: 3.6, annualCost: "1,570円", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD録画・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
@@ -134,7 +134,7 @@ const allTvData = [
   {
     id: 106, size: 32, brand: "TVS REGZA", model: "32V35N",
     price: 39900, point: 3990, ecoStar: 3.7,
-    type: "4K液晶", panel: "ADS / 直下型LED", speaker: 12,
+    type: "HD液晶", panel: "ADS / 直下型LED", speaker: 12,
     googleTV: false, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
     resolution: "HD", annualCost: 1510,
     icon: "🎯", tagline: "コスパREGZA派",
@@ -155,7 +155,7 @@ const allTvData = [
   {
     id: 107, size: 32, brand: "TCL", model: "32S5K",
     price: 39600, point: 3960, ecoStar: 3.7,
-    type: "4K液晶", panel: "量子ドット / 直下型LED", speaker: 16,
+    type: "フルHD量子ドット液晶", panel: "量子ドット / フルHD液晶", speaker: 16,
     googleTV: true, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
     resolution: "FHD", annualCost: 1490,
     icon: "💎", tagline: "コスパ最強派",
@@ -231,7 +231,7 @@ const allTvData = [
       { icon: "📡", title: "ネット動画対応", body: "Netflix・YouTube・Amazonプライム等の主要配信サービスに対応" }
     ],
     staffComment: "REGZAのおまかせ録画・ネット動画対応を10万円以下で搭載。ただし倍速・量子ドット等の高画質機能は省かれたスタンダードグレード。録画重視のエントリーモデル。",
-    specs: { tuner: "地上/BS ×2", hdmi: 2, hdmiArc: 1, usb: 2, speaker: "24W（2ch）", frameRate: "60Hz", ecoStar: 3.0, annualCost: "2,590円", wifi: true, bluetooth: false },
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 2, hdmiArc: 1, usb: 2, speaker: "24W（2ch）", frameRate: "60Hz", ecoStar: 3.0, annualCost: "2,590円", wifi: true, bluetooth: false },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・おまかせ録画・裏番組録画" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
     note: ""
@@ -255,7 +255,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
-    note: ""
+    note: "Fire TV搭載"
   },
   {
     id: 205, size: 43, brand: "Panasonic", model: "TV-43W90B",
@@ -276,7 +276,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
-    note: "ポイント対象外・PREMIUM"
+    note: "ポイント対象外・PREMIUM・Fire TV搭載"
   },
   {
     id: 206, size: 43, brand: "TVS REGZA", model: "43Z670R",
@@ -386,7 +386,7 @@ const allTvData = [
   {
     id: 211, size: 43, brand: "TVS REGZA", model: "43Z770S",
     price: 198000, point: 19800, ecoStar: 0,
-    type: "4K液晶", panel: "全面直下型LED", speaker: 0,
+    type: "Mini LED液晶", panel: "Mini LED / 直下型", speaker: 0,
     googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "🆕", tagline: "REGZA最新フラッグシップ",
@@ -396,9 +396,9 @@ const allTvData = [
     strongPoints: [
       { icon: "🆕", title: "2025年最新モデル", body: "REGZAの2025年フラッグシップ。最新の映像エンジン・機能を全搭載" },
       { icon: "⚡", title: "倍速＋2画面表示", body: "動きのなめらかな倍速表示と、2番組同時視聴の2画面が両立" },
-      { icon: "🏆", title: "全面直下型LEDバックライト", body: "全面均一な高輝度バックライトで、暗いシーンも白飛びなく再現" }
+      { icon: "🏆", title: "Mini LEDバックライト", body: "全面均一な高輝度バックライトで、暗いシーンも白飛びなく再現" }
     ],
-    staffComment: "2025年発売のREGZA最上位。倍速表示＋2画面表示＋全面直下型LEDを同時搭載。ネット動画・録画・スポーツ視聴を最高水準で楽しめる全部入りモデル。",
+    staffComment: "2025年発売のREGZA最上位。倍速表示＋2画面表示＋Mini LEDバックライトを搭載。ネット動画・録画・スポーツ視聴を最高水準で楽しめる全部入りモデル。",
     specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: true, simultaneous: true, detail: "外付けHDD・タイムシフト・おまかせ録画・裏番組録画" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT", "DAZN"],
@@ -407,7 +407,7 @@ const allTvData = [
   {
     id: 212, size: 43, brand: "SHARP", model: "4T-C43HP2",
     price: 188000, point: 18800, ecoStar: 0,
-    type: "miniLED液晶", panel: "miniLED / 直下型", speaker: 0,
+    type: "AQUOS XLED / Mini LED液晶", panel: "Mini LED / 直下型", speaker: 0,
     googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "🔥", tagline: "miniLED最後の一台",
@@ -428,7 +428,7 @@ const allTvData = [
   {
     id: 213, size: 43, brand: "SHARP", model: "4T-43X7A",
     price: 275000, point: 27500, ecoStar: 0,
-    type: "新型miniLED液晶", panel: "miniLED / 直下型", speaker: 0,
+    type: "AQUOS XLED / Mini LED液晶", panel: "Mini LED / 直下型", speaker: 0,
     googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "💡", tagline: "新型miniLEDハイエンド",
@@ -472,7 +472,7 @@ const allTvData = [
     id: 301, size: 50, brand: "Hisense", model: "50U8R",
     price: 94800, point: 9480, ecoStar: 0,
     type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
-    googleTV: false, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "💰", tagline: "50型コスパ最強派",
     catchcopy: "量子ドット×miniLEDが約9.5万円！50型最安値クラスのハイスペック機",
@@ -571,7 +571,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
-    note: "ポイント対象外・PREMIUM"
+    note: "ポイント対象外・PREMIUM・Fire TV搭載"
   },
   {
     id: 306, size: 50, brand: "TVS REGZA", model: "50Z870R",
@@ -634,7 +634,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "展示品・外箱なし"
+    note: "展示品・外箱なし・2022年モデル"
   },
   {
     id: 309, size: 50, brand: "SHARP", model: "4T-C50HN2",
@@ -660,7 +660,7 @@ const allTvData = [
   {
     id: 310, size: 50, brand: "SHARP", model: "4T-50X7A",
     price: 286000, point: 28600, ecoStar: 0,
-    type: "新型miniLED液晶", panel: "miniLED / 直下型", speaker: 0,
+    type: "AQUOS XLED / Mini LED液晶", panel: "Mini LED / 直下型", speaker: 0,
     googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "💡", tagline: "新型miniLEDハイエンド",
@@ -703,7 +703,7 @@ const allTvData = [
   {
     id: 312, size: 48, brand: "LG", model: "OLED48C5PJA",
     price: 208000, point: 20800, ecoStar: 2.0,
-    type: "有機EL（OLED）", panel: "有機EL（OLED）WOLED", speaker: 0,
+    type: "OLED evo / 4K有機EL", panel: "有機EL（OLED）WOLED", speaker: 0,
     googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
     resolution: "4K", annualCost: 4100,
     icon: "🌟", tagline: "LG有機EL定番派",
@@ -716,7 +716,7 @@ const allTvData = [
       { icon: "💰", title: "価格ご相談", body: "表示価格より交渉余地あり。ぜひスタッフまでお声がけを" }
     ],
     staffComment: "LGの有機ELは世界シェアNo.1のパネル品質。ゲーム用途にも強く144Hz対応。価格は「ご相談ください」表記あり、交渉余地があります。",
-    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 2, usb: 3, speaker: "—", frameRate: "144Hz", ecoStar: 2.0, annualCost: "4,100円", wifi: true, bluetooth: true },
+    specs: { tuner: "地上/BS/CS ×2", hdmi: 4, hdmiArc: 2, usb: 3, speaker: "—", frameRate: "120Hz / VRR 144Hz", ecoStar: 2.0, annualCost: "4,100円", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
     note: "価格ご相談"
@@ -740,7 +740,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 2, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "展示品・焼き付きあり・外箱なし"
+    note: "展示品・焼き付きあり・外箱なし・2022年モデル"
   },
   {
     id: 314, size: 48, brand: "SHARP", model: "4T-48S7A",
@@ -766,7 +766,7 @@ const allTvData = [
   {
     id: 315, size: 48, brand: "SHARP", model: "4T-48S9A",
     price: 330000, point: 33000, ecoStar: 0,
-    type: "有機EL（OLED）", panel: "有機EL（OLED）上位", speaker: 0,
+    type: "有機EL（RGB Tandem OLED）", panel: "有機EL（OLED）上位", speaker: 0,
     googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "👑", tagline: "AQUOS有機EL最上位派",
@@ -788,7 +788,7 @@ const allTvData = [
   {
     id: 316, size: 55, brand: "LG", model: "OLED55G5PJB",
     price: 363000, point: 36300, ecoStar: 0,
-    type: "有機EL（OLED）", panel: "有機EL WOLED evo", speaker: 0,
+    type: "OLED evo G5 / 4K有機EL", panel: "有機EL WOLED evo", speaker: 0,
     googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "👑", tagline: "LG有機EL最上位派",
@@ -801,7 +801,7 @@ const allTvData = [
       { icon: "🎮", title: "ゲーム×映画×スポーツ全部最強", body: "4K 120Hz・VRR・ALLM対応でゲームも映画も妥協なし" }
     ],
     staffComment: "LGの55型有機EL最上位Gシリーズ。OLED evo＋α11 AIプロセッサーで明るい部屋でも有機ELの真価が発揮される。ゲーム・映画・スポーツ全てに対応した究極の一台。",
-    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 2, usb: 3, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 2, usb: 3, speaker: "—", frameRate: "120Hz / VRR 165Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
     note: "新製品"
@@ -914,7 +914,7 @@ const allTvData = [
   {
     id: 322, size: 55, brand: "SHARP", model: "4T-55X7A",
     price: 352000, point: 35200, ecoStar: 0,
-    type: "新型miniLED液晶", panel: "miniLED / 直下型", speaker: 0,
+    type: "AQUOS XLED / Mini LED液晶", panel: "Mini LED / 直下型", speaker: 0,
     googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "💡", tagline: "AQUOS 55型最上位派",
@@ -970,7 +970,7 @@ const allTvData = [
       { icon: "💰", title: "価格はご相談", body: "表示176,000円より交渉余地あり" }
     ],
     staffComment: "量子ドット×MiniLED搭載で倍速・2画面も対応した55型上位機。省エネ評価なし。価格「ご相談ください」表記あり交渉可能。",
-    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "3,510円", wifi: true, bluetooth: true },
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（2.1ch）", frameRate: "144Hz / VRR対応", ecoStar: 0, annualCost: "3,510円", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
     note: "価格ご相談"
@@ -991,7 +991,7 @@ const allTvData = [
       { icon: "⚡", title: "倍速表示対応", body: "スポーツ・アニメで残像のないなめらか映像" }
     ],
     staffComment: "ハイセンス55型の現行フラッグシップ。U7Sより上位のパネルを搭載。省エネ評価2.8・年間電気代3,430円。ポイント1%に注意。",
-    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（3スピーカー）", frameRate: "120Hz", ecoStar: 2.8, annualCost: "3,430円", wifi: true, bluetooth: true },
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（3スピーカー）", frameRate: "144Hz / VRR対応", ecoStar: 2.8, annualCost: "3,430円", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
     note: "ポイント1%"
@@ -1075,7 +1075,7 @@ const allTvData = [
       { icon: "💰", title: "価格ご相談", body: "交渉余地あり。スタッフへお気軽に" }
     ],
     staffComment: "65型量子ドット×MiniLED×倍速×2画面対応の上位機。価格「ご相談ください」表記あり交渉余地があります。",
-    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（2.1ch）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "40W（2.1ch）", frameRate: "144Hz / VRR対応", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
     note: "価格ご相談"
@@ -1096,7 +1096,7 @@ const allTvData = [
       { icon: "🌿", title: "省エネ評価3.0", body: "年間電気代3,810円。ハイセンス上位機の中では省エネ" }
     ],
     staffComment: "ハイセンス65型の現行フラッグシップ。省エネ評価3.0・年間電気代3,810円。ポイント1%に注意。上位のMiniLEDパネルで映像美が際立ちます。",
-    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 3.0, annualCost: "3,810円", wifi: true, bluetooth: true },
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "144Hz / VRR対応", ecoStar: 3.0, annualCost: "3,810円", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
     note: "ポイント1%"
@@ -1104,8 +1104,8 @@ const allTvData = [
   {
     id: 409, size: 65, brand: "TCL", model: "65C7K",
     price: 126800, point: 0, ecoStar: 0,
-    type: "量子ドット miniLED", panel: "量子ドット / MiniLED", speaker: 0,
-    googleTV: true, netVideo: true, airplay: false, doubleSpeed: false, twoScreen: false, bdDrive: false,
+    type: "QD-Mini LED液晶", panel: "量子ドット / MiniLED", speaker: 0,
+    googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "💎", tagline: "TCL 65型展示品コスパ",
     catchcopy: "65型量子ドット×miniLED×Google TVが展示品特価！",
@@ -1117,7 +1117,7 @@ const allTvData = [
       { icon: "🏪", title: "展示品特価", body: "外箱なし・状態確認後購入可能" }
     ],
     staffComment: "65型量子ドット×miniLED×Google TVが展示品126,800円。TCLは世界テレビブランド2位の実力派。外箱なし・納期2週間。",
-    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "144Hz / VRR対応", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
     note: "展示品・外箱なし"
@@ -1125,7 +1125,7 @@ const allTvData = [
   {
     id: 410, size: 65, brand: "TCL", model: "65C8K",
     price: 179800, point: 0, ecoStar: 0,
-    type: "量子ドット miniLED", panel: "量子ドット / MiniLED 上位", speaker: 0,
+    type: "QD-Mini LED液晶", panel: "量子ドット / MiniLED 上位", speaker: 0,
     googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "💎", tagline: "TCL 65型上位展示品",
@@ -1138,7 +1138,7 @@ const allTvData = [
       { icon: "🏪", title: "展示品特価", body: "外箱なし・状態確認後購入可能" }
     ],
     staffComment: "TCLの65型上位機C8Kが展示品179,800円。倍速対応で動きの激しい映像もなめらか。外箱なし・納期2週間。",
-    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "144Hz / VRR対応", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
     note: "展示品・外箱なし"
@@ -1167,7 +1167,7 @@ const allTvData = [
   {
     id: 412, size: 65, brand: "SHARP", model: "4T-C65HQ1",
     price: 225800, point: 2258, ecoStar: 0,
-    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 0,
+    type: "QD-OLED有機EL", panel: "QD-OLED", speaker: 0,
     googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "🔄", tagline: "65型有機EL回転スタンド展示品",
@@ -1188,7 +1188,7 @@ const allTvData = [
   {
     id: 413, size: 65, brand: "SHARP", model: "4T-C65HS1",
     price: 302800, point: 0, ecoStar: 0,
-    type: "有機EL（OLED）", panel: "有機EL（OLED）", speaker: 0,
+    type: "QD-OLED有機EL", panel: "QD-OLED", speaker: 0,
     googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "🌟", tagline: "65型AQUOS有機EL展示品",
@@ -1209,7 +1209,7 @@ const allTvData = [
   {
     id: 414, size: 65, brand: "SHARP", model: "4T-65S9A",
     price: 660000, point: 66000, ecoStar: 0,
-    type: "有機EL（OLED）", panel: "有機EL（OLED）上位", speaker: 0,
+    type: "有機EL（RGB Tandem OLED）", panel: "有機EL（OLED）上位", speaker: 0,
     googleTV: true, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "👑", tagline: "AQUOS 65型最上位新発売",
@@ -1327,7 +1327,7 @@ const allTvData = [
       { icon: "📺", title: "75型の圧倒的迫力", body: "10畳以上のリビングで真価を発揮" }
     ],
     staffComment: "75型量子ドット×miniLED×倍速×2画面。価格「ご相談ください」表記あり交渉余地あり。HDMI4端子搭載。",
-    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
+    specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—", frameRate: "144Hz / VRR対応", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
     note: "価格ご相談"
@@ -1373,7 +1373,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "60W（3スピーカー）", frameRate: "120Hz", ecoStar: 1.9, annualCost: "3,510円", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "ポイント対象外・PREMIUM"
+    note: "ポイント対象外・PREMIUM・Fire TV搭載"
   },
   {
     id: 502, size: 48, brand: "Panasonic", model: "TV-48Z90B",
@@ -1394,7 +1394,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "60W（3スピーカー）", frameRate: "120Hz", ecoStar: 1.9, annualCost: "4,130円", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "ポイント対象外・PREMIUM"
+    note: "ポイント対象外・PREMIUM・Fire TV搭載"
   },
   {
     id: 503, size: 50, brand: "Panasonic", model: "TV-50W80B",
@@ -1415,7 +1415,7 @@ const allTvData = [
     specs: { tuner: "地上/BS ×2", hdmi: 3, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 2.2, annualCost: "3,890円", wifi: true, bluetooth: false },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応（1番組）" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
-    note: ""
+    note: "Fire TV搭載"
   },
   {
     id: 504, size: 50, brand: "Panasonic", model: "TV-50M60B",
@@ -1436,7 +1436,7 @@ const allTvData = [
     specs: { tuner: "地上/BS ×2", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "20W（2ch）", frameRate: "60Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer"],
-    note: ""
+    note: "Fire TV搭載"
   },
   {
     id: 505, size: 55, brand: "Panasonic", model: "TV-55W95B",
@@ -1457,7 +1457,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（3スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "ポイント対象外・PREMIUM"
+    note: "ポイント対象外・PREMIUM・Fire TV搭載"
   },
   {
     id: 506, size: 55, brand: "Panasonic", model: "TV-55W90B",
@@ -1478,7 +1478,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（2スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "在庫限り"
+    note: "在庫限り・Fire TV搭載"
   },
   {
     id: 507, size: 55, brand: "Panasonic", model: "TV-55Z90B",
@@ -1499,7 +1499,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（3スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "ポイント対象外・PREMIUM"
+    note: "ポイント対象外・PREMIUM・Fire TV搭載"
   },
   {
     id: 508, size: 55, brand: "Panasonic", model: "TV-55Z95B",
@@ -1520,7 +1520,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（6スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "ポイント対象外・PREMIUM"
+    note: "ポイント対象外・PREMIUM・Fire TV搭載"
   },
   {
     id: 509, size: 65, brand: "Panasonic", model: "TV-65W90B",
@@ -1541,7 +1541,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（2スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: false },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "在庫限り"
+    note: "在庫限り・Fire TV搭載"
   },
   {
     id: 510, size: 65, brand: "Panasonic", model: "TV-65W95B",
@@ -1562,7 +1562,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（3スピーカー）", frameRate: "120Hz", ecoStar: 2.3, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "ポイント対象外・PREMIUM"
+    note: "ポイント対象外・PREMIUM・Fire TV搭載"
   },
   {
     id: 511, size: 65, brand: "Panasonic", model: "TV-65Z90B",
@@ -1583,7 +1583,7 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（3スピーカー）", frameRate: "120Hz", ecoStar: 0, annualCost: "—", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "ポイント対象外・PREMIUM"
+    note: "ポイント対象外・PREMIUM・Fire TV搭載"
   },
   {
     id: 512, size: 65, brand: "Panasonic", model: "TV-65Z95B",
@@ -1604,13 +1604,13 @@ const allTvData = [
     specs: { tuner: "地上/BS/CS ×3", hdmi: 4, hdmiArc: 1, usb: 2, speaker: "—（6スピーカー）", frameRate: "120Hz", ecoStar: 1.9, annualCost: "5,670円", wifi: true, bluetooth: true },
     recording: { hdd: true, timeshift: false, simultaneous: true, detail: "外付けHDD・裏番組録画対応" },
     streaming: ["Netflix", "YouTube", "Prime Video", "Disney+", "hulu", "ABEMA", "TVer", "U-NEXT"],
-    note: "ポイント対象外・PREMIUM"
+    note: "ポイント対象外・PREMIUM・Fire TV搭載"
   },
   /* ─────────── ビックカメラ店頭 REGZA 追加分（2026年5月） ─────────── */
   {
     id: 601, size: 24, brand: "TVS REGZA", model: "24V35S",
     price: 36640, point: 3664, ecoStar: 0,
-    type: "ハイビジョン液晶", panel: "液晶 / 直下型LED", speaker: 0,
+    type: "HD液晶", panel: "液晶 / 直下型LED", speaker: 0,
     googleTV: false, netVideo: true, airplay: true, doubleSpeed: false, twoScreen: false, bdDrive: false,
     resolution: "HD", annualCost: 0,
     icon: "🎯", tagline: "小型ネット動画派",
@@ -1694,7 +1694,7 @@ const allTvData = [
   {
     id: 605, size: 55, brand: "TVS REGZA", model: "55Z770S",
     price: 272500, point: 27250, ecoStar: 0,
-    type: "4K液晶", panel: "全面直下型LED", speaker: 0,
+    type: "Mini LED液晶", panel: "Mini LED / 直下型", speaker: 0,
     googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "🆕", tagline: "REGZA最新フラッグシップ",
@@ -1715,7 +1715,7 @@ const allTvData = [
   {
     id: 606, size: 65, brand: "TVS REGZA", model: "65Z770S",
     price: 348800, point: 34880, ecoStar: 0,
-    type: "4K液晶", panel: "全面直下型LED", speaker: 0,
+    type: "Mini LED液晶", panel: "Mini LED / 直下型", speaker: 0,
     googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "🆕", tagline: "REGZA最新フラッグシップ",
@@ -1736,7 +1736,7 @@ const allTvData = [
   {
     id: 607, size: 75, brand: "TVS REGZA", model: "75Z770S",
     price: 399260, point: 39926, ecoStar: 0,
-    type: "4K液晶", panel: "全面直下型LED", speaker: 0,
+    type: "Mini LED液晶", panel: "Mini LED / 直下型", speaker: 0,
     googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "🆕", tagline: "REGZA最新フラッグシップ",
@@ -1863,7 +1863,7 @@ const allTvData = [
     id: 613, size: 100, brand: "TVS REGZA", model: "100Z970R",
     price: 1012000, point: 101200, ecoStar: 0,
     type: "4K MiniLED液晶", panel: "量子ドット / MiniLED", speaker: 0,
-    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: false, bdDrive: false,
+    googleTV: false, netVideo: true, airplay: false, doubleSpeed: true, twoScreen: true, bdDrive: false,
     resolution: "4K", annualCost: 0,
     icon: "👑", tagline: "100型MiniLED最上位",
     catchcopy: "REGZA Z970R 100型！量子ドット×MiniLEDの百万円級超大画面",
