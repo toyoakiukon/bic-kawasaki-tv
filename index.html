@@ -2042,7 +2042,7 @@ var OVERRIDE_KEY = "tv-price-overrides-v1";
 function loadOverrides(setOverrides) {
   try {
     if (window.storage && window.storage.get) {
-      window.storage.get(OVERRIDE_KEY).then(function(res) {
+      window.storage.get(OVERRIDE_KEY, true).then(function(res) {
         if (res && res.value) {
           try { setOverrides(JSON.parse(res.value)); } catch (e) { setOverrides({}); }
         }
@@ -2054,7 +2054,7 @@ function loadOverrides(setOverrides) {
 function saveOverrides(obj) {
   try {
     if (window.storage && window.storage.set) {
-      window.storage.set(OVERRIDE_KEY, JSON.stringify(obj)).catch(function() {});
+      window.storage.set(OVERRIDE_KEY, JSON.stringify(obj), true).catch(function() {});
     }
   } catch (e) {}
 }
